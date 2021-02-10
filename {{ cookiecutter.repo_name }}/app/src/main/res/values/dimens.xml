@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space_extra_small">4dp</dimen>
+    <dimen name="space_small">8dp</dimen>
+    <dimen name="space_normal">16dp</dimen>
+    <dimen name="space_medium">20dp</dimen>
+    <dimen name="space_large">32dp</dimen>
+    <dimen name="space_extra_large">64dp</dimen>
+
+    <!--  item_user  -->
+    <dimen name="profile_img_size">100dp</dimen>
+    <dimen name="placeholder_corner_radius">50dp</dimen>
+</resources>

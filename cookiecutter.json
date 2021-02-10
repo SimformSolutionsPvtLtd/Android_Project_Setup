@@ -1,0 +1,12 @@
+{
+  "app_name": "App Name",
+  "repo_name": "Repository Name",
+  "package_name": "com.simformsolutions.app",
+  "appcenter_key": "APPCENTER_KEY",
+  "package_dir": "{{ cookiecutter.package_name | replace('.', '/') }}",
+  "copyright_year_name": "2021 {{ cookiecutter.app_name }}",
+  "include_testing": ["n", "y"],
+  "include_room_db": ["n", "y"],
+  "launch_studio": ["false", "true"],
+  "_copy_without_render": [".gradle", "gradle/", "*gradlew", "*gradlew.bat"]
+}
