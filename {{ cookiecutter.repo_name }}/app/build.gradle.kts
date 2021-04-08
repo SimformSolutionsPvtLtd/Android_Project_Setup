@@ -106,7 +106,7 @@ dependencies {
     // Navigation
     implementation(Libs.NAVIGATION_UI_KTX)
     implementation(Libs.NAVIGATION_FRAGMENT_KTX)
-    {%- if cookiecutter.include_testing == 'y' %}
+    {%- if cookiecutter.include_room_db == 'y' %}
     // Room
     implementation(Libs.ROOM_RUNTIME)
     implementation(Libs.ROOM_KTX)
