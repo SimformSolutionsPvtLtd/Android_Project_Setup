@@ -1,13 +1,13 @@
-package {{ cookiecutter.package_name }}.ui.activity
+package {{ cookiecutter.package_dir }}.ui.activity
 
 import androidx.activity.viewModels
 import {{ cookiecutter.package_name }}.R
-import {{ cookiecutter.package_name }}.base.BaseAppCompatActivity
+import {{ cookiecutter.package_dir }}.base.BaseAppCompatActivity
 import {{ cookiecutter.package_name }}.databinding.ActivitySplashBinding
-import {{ cookiecutter.package_name }}.utils.extension.launchActivity
-import {{ cookiecutter.package_name }}.utils.extension.observeEvent
-import {{ cookiecutter.package_name }}.viewmodel.SplashViewModel
-import {{ cookiecutter.package_name }}.viewmodel.SplashViewModel.Destination
+import {{ cookiecutter.package_dir }}.utils.extension.launchActivity
+import {{ cookiecutter.package_dir }}.utils.extension.observeEvent
+import {{ cookiecutter.package_dir }}.viewmodel.SplashViewModel
+import {{ cookiecutter.package_dir }}.viewmodel.SplashViewModel.Destination
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

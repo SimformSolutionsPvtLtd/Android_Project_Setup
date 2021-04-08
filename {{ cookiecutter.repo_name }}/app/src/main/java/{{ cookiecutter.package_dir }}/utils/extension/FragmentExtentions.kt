@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.utils.extension
+package {{ cookiecutter.package_dir }}.utils.extension
 
 import android.content.Intent
 import android.os.Bundle

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="{{ cookiecutter.package_name }}.viewmodel.SplashViewModel" />
+            type="{{ cookiecutter.package_dir }}.viewmodel.SplashViewModel" />
 
     </data>
 

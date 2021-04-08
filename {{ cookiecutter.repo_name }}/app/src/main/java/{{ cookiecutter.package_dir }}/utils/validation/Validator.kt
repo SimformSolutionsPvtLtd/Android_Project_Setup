@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.utils.validation
+package {{ cookiecutter.package_dir }}.utils.validation
 
 /**
  * Validators.

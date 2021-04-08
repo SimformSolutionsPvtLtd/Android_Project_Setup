@@ -1,10 +1,10 @@
-package {{ cookiecutter.package_name }}.data.local.db
+package {{ cookiecutter.package_dir }}.data.local.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import {{ cookiecutter.package_name }}.model.DummyEntity
+import {{ cookiecutter.package_dir }}.model.DummyEntity
 
 /**
 * The [Room] database for this app.

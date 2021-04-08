@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.callback
+package {{ cookiecutter.package_dir }}.callback
 
 /**
  * Interface definition for a callback to be invoked when a view is clicked.

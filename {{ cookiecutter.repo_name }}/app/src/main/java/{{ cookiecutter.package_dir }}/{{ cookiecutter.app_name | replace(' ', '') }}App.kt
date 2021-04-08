@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}
+package {{ cookiecutter.package_dir }}
 
 import android.app.Application
 import android.net.ConnectivityManager
@@ -8,10 +8,12 @@ import android.util.Log
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
-import {{ cookiecutter.package_name }}.utils.NetworkUtil
-import {{ cookiecutter.package_name }}.utils.ProductFlavor
+import {{ cookiecutter.package_dir }}.utils.NetworkUtil
+import {{ cookiecutter.package_dir }}.utils.ProductFlavor
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
+import {{ cookiecutter.package_name }}.BuildConfig
+
 
 @HiltAndroidApp
 class {{ cookiecutter.app_name | replace(' ', '') }}App : Application() {

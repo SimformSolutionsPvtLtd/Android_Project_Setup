@@ -1,8 +1,8 @@
-package {{ cookiecutter.package_name }}.utils.result
+package {{ cookiecutter.package_dir }}.utils.result
 
 import androidx.lifecycle.MutableLiveData
-import {{ cookiecutter.package_name }}.utils.result.Result.Error
-import {{ cookiecutter.package_name }}.utils.result.Result.Success
+import {{ cookiecutter.package_dir }}.utils.result.Result.Error
+import {{ cookiecutter.package_dir }}.utils.result.Result.Success
 
 /**
  * A generic class that holds a value with its loading status.

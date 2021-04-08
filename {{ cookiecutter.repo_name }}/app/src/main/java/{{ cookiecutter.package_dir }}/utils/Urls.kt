@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.utils
+package {{ cookiecutter.package_dir }}.utils
 
 /**
  * API URLs collection.

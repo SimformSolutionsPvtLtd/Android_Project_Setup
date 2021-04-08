@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.utils
+package {{ cookiecutter.package_dir }}.utils
 
 import android.content.Context
 import androidx.annotation.StringRes

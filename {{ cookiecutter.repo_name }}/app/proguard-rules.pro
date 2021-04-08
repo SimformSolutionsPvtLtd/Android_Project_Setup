@@ -25,7 +25,7 @@
 -keep public class * extends java.lang.Exception
 
 # Keep model
--keepclassmembers class {{ cookiecutter.package_name }}.model.** { <fields>; }
+-keepclassmembers class {{ cookiecutter.package_dir }}.model.** { <fields>; }
 
 # Dagger2
 -dontwarn com.google.errorprone.annotations.**

@@ -1,13 +1,13 @@
-package {{ cookiecutter.package_name }}.viewmodel
+package {{ cookiecutter.package_dir }}.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import {{ cookiecutter.package_name }}.base.BaseViewModel
-import {{ cookiecutter.package_name }}.data.repository.UserRepository
-import {{ cookiecutter.package_name }}.model.data.User
-import {{ cookiecutter.package_name }}.utils.result.Event
+import {{ cookiecutter.package_dir }}.base.BaseViewModel
+import {{ cookiecutter.package_dir }}.data.repository.UserRepository
+import {{ cookiecutter.package_dir }}.model.data.User
+import {{ cookiecutter.package_dir }}.utils.result.Event
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -15,7 +15,7 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 /**
- * ViewModel for [{{ cookiecutter.package_name }}.ui.activity.SampleActivity]
+ * ViewModel for [{{ cookiecutter.package_dir }}.ui.activity.SampleActivity]
  */
 class SampleViewModel @ViewModelInject constructor(
     private val userRepository: UserRepository

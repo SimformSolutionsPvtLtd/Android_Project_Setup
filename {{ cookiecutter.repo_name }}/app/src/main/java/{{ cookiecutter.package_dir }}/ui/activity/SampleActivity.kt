@@ -1,13 +1,13 @@
-package {{ cookiecutter.package_name }}.ui.activity
 
+package {{ cookiecutter.package_dir }}.ui.activity
 import androidx.activity.viewModels
 import {{ cookiecutter.package_name }}.R
-import {{ cookiecutter.package_name }}.base.BaseAppCompatActivity
+import {{ cookiecutter.package_dir }}.base.BaseAppCompatActivity
 import {{ cookiecutter.package_name }}.databinding.ActivitySampleBinding
-import {{ cookiecutter.package_name }}.ui.adapter.UserAdapter
-import {{ cookiecutter.package_name }}.utils.RecyclerPaginationListener
-import {{ cookiecutter.package_name }}.utils.extension.observeEvent
-import {{ cookiecutter.package_name }}.viewmodel.SampleViewModel
+import {{ cookiecutter.package_dir }}.ui.adapter.UserAdapter
+import {{ cookiecutter.package_dir }}.utils.RecyclerPaginationListener
+import {{ cookiecutter.package_dir }}.utils.extension.observeEvent
+import {{ cookiecutter.package_dir }}.viewmodel.SampleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

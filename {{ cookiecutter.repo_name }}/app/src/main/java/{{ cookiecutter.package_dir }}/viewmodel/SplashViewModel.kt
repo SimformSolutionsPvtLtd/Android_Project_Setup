@@ -13,19 +13,19 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package {{ cookiecutter.package_name }}.viewmodel
+package {{ cookiecutter.package_dir }}.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import {{ cookiecutter.package_name }}.base.BaseViewModel
-import {{ cookiecutter.package_name }}.utils.result.Event
+import {{ cookiecutter.package_dir }}.base.BaseViewModel
+import {{ cookiecutter.package_dir }}.utils.result.Event
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 /**
- * ViewModel for [{{ cookiecutter.package_name }}.ui.activity.SplashActivity]
+ * ViewModel for [{{ cookiecutter.package_dir }}.ui.activity.SplashActivity]
  */
 class SplashViewModel @ViewModelInject constructor() : BaseViewModel() {
 

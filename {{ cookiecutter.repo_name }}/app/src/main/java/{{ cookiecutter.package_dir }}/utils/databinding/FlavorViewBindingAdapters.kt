@@ -1,13 +1,13 @@
-package {{ cookiecutter.package_name }}.utils.databinding
+package {{ cookiecutter.package_dir }}.utils.databinding
 
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import {{ cookiecutter.package_name }}.BuildConfig
-import {{ cookiecutter.package_name }}.ui.delegate.FlavorDelegate
-import {{ cookiecutter.package_name }}.utils.ProductFlavor
-import {{ cookiecutter.package_name }}.utils.ProductFlavor.Flavor
+import {{ cookiecutter.package_dir }}.ui.delegate.FlavorDelegate
+import {{ cookiecutter.package_dir }}.utils.ProductFlavor
+import {{ cookiecutter.package_dir }}.utils.ProductFlavor.Flavor
 
 @BindingAdapter("showFlavorInfo", "flavorDelegate")
 fun showFlavorInfo(view: TextView, flavor: Flavor?, delegate: FlavorDelegate) {

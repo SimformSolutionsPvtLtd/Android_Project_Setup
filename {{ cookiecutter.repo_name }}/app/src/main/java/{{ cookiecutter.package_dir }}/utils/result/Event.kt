@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.utils.result
+package {{ cookiecutter.package_dir }}.utils.result
 
 import androidx.lifecycle.Observer
 

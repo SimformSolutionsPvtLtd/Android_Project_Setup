@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.data.local.pref
+package {{ cookiecutter.package_dir }}.data.local.pref
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -8,7 +8,7 @@ import androidx.core.content.edit
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import {{ cookiecutter.package_name }}.BuildConfig
-import {{ cookiecutter.package_name }}.utils.ProductFlavor
+import {{ cookiecutter.package_dir }}.utils.ProductFlavor
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
