@@ -55,3 +55,6 @@ launch_studio | Open Android Studio after project is created. <b>Works only for 
 * Import project in Android Studio (If not launching when launch_studio asked)
 * Sync project with Gradle files
 * Rebuild
+
+##Tutorial for implementing image picker
+https://sway.office.com/qfCj0V7sH4V2UOCm?authoringPlay=true&publish
