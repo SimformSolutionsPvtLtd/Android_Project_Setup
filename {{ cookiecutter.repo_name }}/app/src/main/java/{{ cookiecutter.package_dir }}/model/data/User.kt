@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_dir }}.model.data
+package {{ cookiecutter.package_name }}.model.data
 
 import com.google.gson.annotations.SerializedName
 

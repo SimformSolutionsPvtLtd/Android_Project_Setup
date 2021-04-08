@@ -15,19 +15,19 @@
 */
 
 
-package {{ cookiecutter.package_dir }}.ui.activity
+package {{ cookiecutter.package_name }}.ui.activity
 
 import android.content.Intent
 import android.graphics.Bitmap
 import androidx.activity.viewModels
 import androidx.activity.viewModels
 import {{ cookiecutter.package_name }}.R
-import {{ cookiecutter.package_dir }}.base.BaseAppCompatActivity
+import {{ cookiecutter.package_name }}.base.BaseAppCompatActivity
 import {{ cookiecutter.package_name }}.databinding.ActivityImagePickerBinding
-import {{ cookiecutter.package_dir }}.viewmodel.SampleViewModel
-import {{ cookiecutter.package_dir }}.utils.mediapicker.ImagePickerCameraGallery
-import {{ cookiecutter.package_dir }}.utils.mediapicker.ImagePickerOptionsChoiceEnum
-import {{ cookiecutter.package_dir }}.utils.mediapicker.OnMediaPickerHandlerInterface
+import {{ cookiecutter.package_name }}.viewmodel.SampleViewModel
+import {{ cookiecutter.package_name }}.utils.mediapicker.ImagePickerCameraGallery
+import {{ cookiecutter.package_name }}.utils.mediapicker.ImagePickerOptionsChoiceEnum
+import {{ cookiecutter.package_name }}.utils.mediapicker.OnMediaPickerHandlerInterface
 
 import dagger.hilt.android.AndroidEntryPoint
 

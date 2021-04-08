@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package {{ cookiecutter.package_dir }}.utils.mediapicker
+package {{ cookiecutter.package_name }}.utils.mediapicker
 enum class ImagePickerOptionsChoiceEnum {
     ONLY_GALLERY,
     ONLY_CAMERA,

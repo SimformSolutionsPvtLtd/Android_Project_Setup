@@ -1,8 +1,8 @@
-package {{ cookiecutter.package_dir }}.ui.delegate
+package {{ cookiecutter.package_name }}.ui.delegate
 
 import androidx.lifecycle.LiveData
-import {{ cookiecutter.package_dir }}.data.repository.FlavorRepository
-import {{ cookiecutter.package_dir }}.utils.ProductFlavor
+import {{ cookiecutter.package_name }}.data.repository.FlavorRepository
+import {{ cookiecutter.package_name }}.utils.ProductFlavor
 import javax.inject.Inject
 import javax.inject.Singleton
 

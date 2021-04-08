@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="{{ cookiecutter.package_dir }}.model.data.User" />
+            type="{{ cookiecutter.package_name }}.model.data.User" />
 
     </data>
 

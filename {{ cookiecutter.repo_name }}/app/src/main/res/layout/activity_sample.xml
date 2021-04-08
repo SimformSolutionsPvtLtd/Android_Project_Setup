@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="{{ cookiecutter.package_dir }}.viewmodel.SampleViewModel" />
+            type="{{ cookiecutter.package_name }}.viewmodel.SampleViewModel" />
 
     </data>
 

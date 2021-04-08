@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_dir }}.base
+package {{ cookiecutter.package_name }}.base
 
 import android.os.Bundle
 import androidx.annotation.LayoutRes

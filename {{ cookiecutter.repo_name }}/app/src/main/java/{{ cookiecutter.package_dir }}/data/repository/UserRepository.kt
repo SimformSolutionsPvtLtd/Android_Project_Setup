@@ -1,8 +1,8 @@
-package {{ cookiecutter.package_dir }}.data.repository
+package {{ cookiecutter.package_name }}.data.repository
 
-import {{ cookiecutter.package_dir }}.data.remote.ApiService
-import {{ cookiecutter.package_dir }}.model.data.User
-import {{ cookiecutter.package_dir }}.utils.extension.response
+import {{ cookiecutter.package_name }}.data.remote.ApiService
+import {{ cookiecutter.package_name }}.model.data.User
+import {{ cookiecutter.package_name }}.utils.extension.response
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_dir }}.utils.extension
+package {{ cookiecutter.package_name }}.utils.extension
 
 import com.google.gson.Gson
 

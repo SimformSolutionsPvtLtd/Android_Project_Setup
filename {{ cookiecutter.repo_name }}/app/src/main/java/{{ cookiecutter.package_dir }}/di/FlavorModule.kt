@@ -1,11 +1,11 @@
-package {{ cookiecutter.package_dir }}.di
+package {{ cookiecutter.package_name }}.di
 
-import {{ cookiecutter.package_dir }}.data.local.pref.FlavorPreferences
-import {{ cookiecutter.package_dir }}.data.local.pref.FlavorPreferencesImpl
-import {{ cookiecutter.package_dir }}.data.repository.FlavorRepository
-import {{ cookiecutter.package_dir }}.data.repository.FlavorRepositoryImpl
-import {{ cookiecutter.package_dir }}.ui.delegate.FlavorDelegate
-import {{ cookiecutter.package_dir }}.ui.delegate.FlavorDelegateImpl
+import {{ cookiecutter.package_name }}.data.local.pref.FlavorPreferences
+import {{ cookiecutter.package_name }}.data.local.pref.FlavorPreferencesImpl
+import {{ cookiecutter.package_name }}.data.repository.FlavorRepository
+import {{ cookiecutter.package_name }}.data.repository.FlavorRepositoryImpl
+import {{ cookiecutter.package_name }}.ui.delegate.FlavorDelegate
+import {{ cookiecutter.package_name }}.ui.delegate.FlavorDelegateImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

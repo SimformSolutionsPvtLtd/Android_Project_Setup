@@ -1,8 +1,8 @@
-package {{ cookiecutter.package_dir }}.di
+package {{ cookiecutter.package_name }}.di
 
 {% if cookiecutter.include_room_db == 'y' %}
 import android.content.Context
-import {{ cookiecutter.package_dir }}.data.local.db.AppDatabase
+import {{ cookiecutter.package_name }}.data.local.db.AppDatabase
 {% endif -%}
 import dagger.Module
 {%- if cookiecutter.include_room_db == 'y' %}

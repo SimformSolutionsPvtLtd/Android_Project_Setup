@@ -1,9 +1,9 @@
-package {{ cookiecutter.package_dir }}.ui.adapter
+package {{ cookiecutter.package_name }}.ui.adapter
 
 import android.view.View
 import {{ cookiecutter.package_name }}.R
-import {{ cookiecutter.package_dir }}.base.BaseRecyclerAdapter
-import {{ cookiecutter.package_dir }}.model.data.User
+import {{ cookiecutter.package_name }}.base.BaseRecyclerAdapter
+import {{ cookiecutter.package_name }}.model.data.User
 
 class UserAdapter : BaseRecyclerAdapter<User>() {
     override fun getLayoutIdForType(viewType: Int): Int = R.layout.item_user

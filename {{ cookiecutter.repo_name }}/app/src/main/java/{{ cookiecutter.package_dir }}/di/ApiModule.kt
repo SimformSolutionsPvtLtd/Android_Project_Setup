@@ -1,10 +1,10 @@
-package {{ cookiecutter.package_dir }}.di
+package {{ cookiecutter.package_name }}.di
 
 import android.content.Context
 import {{ cookiecutter.package_name }}.BuildConfig
-import {{ cookiecutter.package_dir }}.data.local.pref.FlavorPreferences
-import {{ cookiecutter.package_dir }}.data.remote.ApiService
-import {{ cookiecutter.package_dir }}.utils.Urls
+import {{ cookiecutter.package_name }}.data.local.pref.FlavorPreferences
+import {{ cookiecutter.package_name }}.data.remote.ApiService
+import {{ cookiecutter.package_name }}.utils.Urls
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

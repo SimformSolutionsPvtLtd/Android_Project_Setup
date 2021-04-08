@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_dir }}.di
+package {{ cookiecutter.package_name }}.di
 
 import dagger.Module
 import dagger.Provides

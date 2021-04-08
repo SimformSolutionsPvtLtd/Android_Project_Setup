@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_dir }}.base
+package {{ cookiecutter.package_name }}.base
 
 import androidx.lifecycle.ViewModel
 

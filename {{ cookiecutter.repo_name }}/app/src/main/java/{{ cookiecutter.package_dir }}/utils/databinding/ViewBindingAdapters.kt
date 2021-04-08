@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_dir }}.utils.databinding
+package {{ cookiecutter.package_name }}.utils.databinding
 
 import android.graphics.drawable.Drawable
 import android.net.Uri

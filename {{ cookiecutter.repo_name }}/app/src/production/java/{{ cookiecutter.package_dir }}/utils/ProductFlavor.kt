@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_dir }}.utils
+package {{ cookiecutter.package_name }}.utils
 
 object ProductFlavor {
     val CURRENT: Flavor = Flavor.PRODUCTION

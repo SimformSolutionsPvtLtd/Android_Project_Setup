@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_dir }}.utils.pref
+package {{ cookiecutter.package_name }}.utils.pref
 
 import android.content.SharedPreferences
 import androidx.annotation.WorkerThread

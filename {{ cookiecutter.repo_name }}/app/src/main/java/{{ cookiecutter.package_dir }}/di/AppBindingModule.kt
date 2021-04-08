@@ -1,9 +1,9 @@
-package {{ cookiecutter.package_dir }}.di
+package {{ cookiecutter.package_name }}.di
 
-import {{ cookiecutter.package_dir }}.data.repository.UserRepository
-import {{ cookiecutter.package_dir }}.data.repository.UserRepositoryImpl
-import {{ cookiecutter.package_dir }}.utils.ResourceHelper
-import {{ cookiecutter.package_dir }}.utils.ResourceHelperImpl
+import {{ cookiecutter.package_name }}.data.repository.UserRepository
+import {{ cookiecutter.package_name }}.data.repository.UserRepositoryImpl
+import {{ cookiecutter.package_name }}.utils.ResourceHelper
+import {{ cookiecutter.package_name }}.utils.ResourceHelperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
