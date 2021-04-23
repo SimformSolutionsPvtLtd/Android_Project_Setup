@@ -25,7 +25,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -40,7 +39,9 @@ import java.net.ConnectException
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+/**
+ * ImagePickerCameraGallery class is used for taking image from either camera or gallery or both
+ */
 class ImagePickerCameraGallery(
         val activity: Activity?,
         private val packageManager: PackageManager?,
@@ -70,11 +71,15 @@ class ImagePickerCameraGallery(
         private var lifecycle: Lifecycle? = null
         private var imagePickerOptionsChoiceEnum: ImagePickerOptionsChoiceEnum? = ImagePickerOptionsChoiceEnum.BOTH_GALLERY_AND_CAMERA
 
-        @Suppress("unused")
+        /**
+         *This method is used to register callback for handling media received
+         */
         fun setOnPickerMediaHandlerInterface(onPickerMediaHandlerInterface: OnMediaPickerHandlerInterface) =
                 apply { this.onMediaPickerHandlerInterface = onPickerMediaHandlerInterface }
 
-        @Suppress("unused")
+        /**
+         *This method is used to register choice what options needs to give in dialog
+         */
         fun setImagePickerOptionsChoice(imagePickerOptionsChoiceEnum: ImagePickerOptionsChoiceEnum) =
                 apply { this.imagePickerOptionsChoiceEnum = imagePickerOptionsChoiceEnum }
 
@@ -93,6 +98,9 @@ class ImagePickerCameraGallery(
                 }
     }
 
+    /**
+     *This method is used to open dialog picker
+     */
     fun openImagePickerDialog() {
 
         val options: Array<CharSequence> = when {
@@ -131,6 +139,9 @@ class ImagePickerCameraGallery(
 
     }
 
+    /**
+     *This method is used to take image from gallery
+     */
     private fun takeImageFromGallery() {
         selectedOptions = REQUEST_GALLERY_CAPTURE
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -145,6 +156,9 @@ class ImagePickerCameraGallery(
 
     }
 
+    /**
+     *This method is used to take image from camera
+     */
     private fun takeImageFromCamera() {
         selectedOptions = REQUEST_IMAGE_CAPTURE
 
@@ -178,6 +192,9 @@ class ImagePickerCameraGallery(
         }
     }
 
+    /**
+     *This method is used to open camera intent
+     */
     private fun openCameraIntent() {
         selectedOptions = REQUEST_IMAGE_CAPTURE
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
@@ -205,15 +222,20 @@ class ImagePickerCameraGallery(
             }
         }
     }
+    /**
+     *This method is used to open gallery intent
+     */
     private fun openGalleryIntent() {
         selectedOptions = REQUEST_GALLERY_CAPTURE
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         activity?.startActivityForResult(intent, REQUEST_GALLERY_CAPTURE)
     }
 
+    /**
+     *This onActivityResult is used to handle media selection
+     */
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
-            currentPhotoPath?.let { Log.e("onActivityResult", it) }
             val myBitmap = BitmapFactory.decodeFile(currentPhotoPath)
             onMediaPickerHandlerInterface?.onMediaReceived(currentPhotoPath, myBitmap)
 
@@ -305,9 +327,6 @@ class ImagePickerCameraGallery(
                 perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] = PackageManager.PERMISSION_GRANTED
                 perms[Manifest.permission.READ_EXTERNAL_STORAGE] = PackageManager.PERMISSION_GRANTED
 
-                // Fill with actual results from user
-                Log.e("onRequest","1")
-
                 if (grantResults.isNotEmpty()) {
                     var i = 0
                     while (i < permissions.size) {
@@ -321,7 +340,6 @@ class ImagePickerCameraGallery(
                     //else any one or both the permissions are not granted
 
                     if (selectedOptions == REQUEST_IMAGE_CAPTURE) {
-                        Log.e("onRequest", "3")
 
                         if (perms[Manifest.permission.CAMERA] == PackageManager.PERMISSION_GRANTED
                                 && perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED
@@ -330,12 +348,7 @@ class ImagePickerCameraGallery(
 
                         }
 
-
-
-
-
                     } else if (selectedOptions == REQUEST_GALLERY_CAPTURE) {
-                        Log.e("onRequest","4")
                         if (perms[Manifest.permission.READ_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED
                         ){
                             takeImageFromGallery()
@@ -347,7 +360,9 @@ class ImagePickerCameraGallery(
             }
         }
     }
-    //Delete files when activity will be destroyed
+    /**
+     *This ImagePickerLifeCycleObserver helper class is used observer activity lifecycle
+     */
     class ImagePickerLifeCycleObserver : LifecycleObserver {
 
         @Suppress("unused")

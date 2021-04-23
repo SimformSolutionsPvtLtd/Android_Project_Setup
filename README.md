@@ -55,3 +55,89 @@ launch_studio | Open Android Studio after project is created. <b>Works only for 
 * Import project in Android Studio (If not launching when launch_studio asked)
 * Sync project with Gradle files
 * Rebuild
+
+
+
+## Android Picker Feature Implementation Instruction
+
+Step 1 : Need to declare Image Picker Helper class at appropriate level
+
+       var imagePickerCameraGallery: ImagePickerCameraGallery?=null
+
+
+Step 2 : Initialise above object with customize options
+
+    imagePickerCameraGallery = ImagePickerCameraGallery.Builder(this,packageManager).
+
+
+Note: Pass constructor parameters are as Activity and Package Manager mandatory.
+
+        setImagePickerOptionsChoice(ImagePickerOptionsChoiceEnum.BOTH_GALLERY_AND_CAMERA).setOnPickerMediaHandlerInterface(
+
+            object : OnMediaPickerHandlerInterface {
+
+                override fun onMediaReceived(filePath: String?, bitmap: Bitmap?) {
+
+                    binding.imageView1.setImageBitmap(bitmap)
+
+                }
+
+                override fun onMediaFailed(message: String?) {
+                }
+
+            }
+        )
+            .build()
+
+
+(2.1) To get File Path or Bitmap and required to get error message register callback
+
+Method Name                             Description                                                                                                      Usage
+
+
+(1) SetOnPickerMediaHandlerInterface()     To use for register callback for handling image picker success or failed                                       Optional
+
+(2) SetImagePickerOptionsChoice()          To use if you want show image taking options (1) From gallery only (2) From Camera only (3) From both          Optional
+                                       Default: From both options will show
+
+                                           Values: Enum Type
+
+                                           ONLY_GALLERY,
+                                           ONLY_CAMERA,
+                                           BOTH_GALLERY_AND_CAMERA
+
+(3) SetLifeCycleObject()                   To delete unnecessary cached files which used while taking from camera/galley to write code in below method    Optional
+
+
+Step 3 : Permission will handle by in built helper class by just putting below code
+
+
+
+override fun onRequestPermissionsResult(
+
+        requestCode: Int,
+
+        permissions: Array<String>,
+
+        grantResults: IntArray
+
+    ) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        imagePickerCameraGallery?.onRequestPermissionsResult(requestCode,permissions,grantResults)
+
+    }
+
+
+Step 4 :  To handle callback of success and failed of image picker please use below code in on Activity
+
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        super.onActivityResult(requestCode, resultCode, data)
+
+        imagePickerCameraGallery?.onActivityResult(requestCode,resultCode,data)
+
+    }

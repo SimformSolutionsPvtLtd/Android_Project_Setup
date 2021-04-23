@@ -17,6 +17,10 @@
 package {{ cookiecutter.package_name }}.utils.mediapicker
 import android.graphics.Bitmap
 
+
+/**
+ * OnMediaPickerHandlerInterface interface is used for handling callback for Media received or Media failed
+ */
 interface OnMediaPickerHandlerInterface {
     fun onMediaReceived(filePath:String?,bitmap: Bitmap?)
     fun onMediaFailed(message:String?)

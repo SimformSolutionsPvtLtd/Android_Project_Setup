@@ -15,6 +15,10 @@
 */
 
 package {{ cookiecutter.package_name }}.utils.mediapicker
+
+/**
+ * ImagePickerOptionsChoiceEnum enum type is used for allow options in dialog for taking image by camera or gallery or both
+ */
 enum class ImagePickerOptionsChoiceEnum {
     ONLY_GALLERY,
     ONLY_CAMERA,
