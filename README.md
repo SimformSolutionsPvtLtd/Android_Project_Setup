@@ -25,7 +25,7 @@
 
 * Python3
     * [Download](https://www.python.org/downloads/)
-    * ADD PYTHON TO ENVIORNMENT PATH
+    * ADD PYTHON TO ENVIRONMENT PATH
 * Cookie Cutter
     * ```pip install --user cookiecutter```
 
