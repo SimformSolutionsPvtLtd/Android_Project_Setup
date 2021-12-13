@@ -66,7 +66,7 @@ object Libs {
     const val REFLECT = "reflect"
 
     // Alerter
-    const val ALERTER = "com.tapadoo.android:alerter:${Versions.ALERTER}"
+    const val ALERTER = "com.github.tapadoo:alerter:${Versions.ALERTER}"
 
     // Loading Button
     const val LOADING_BUTTON = "br.com.simplepass:loading-button-android:${Versions.LOADING_BUTTON}"

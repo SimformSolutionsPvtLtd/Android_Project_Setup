@@ -9,8 +9,8 @@ import {{ cookiecutter.package_name }}.ui.delegate.FlavorDelegateImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
+import dagger.hilt.components.SingletonComponent
 
 /**
  * Defines all the classes that need to be provided in the scope of the app.
@@ -19,7 +19,7 @@ import javax.inject.Singleton
  * NOTE : This module should only be used for app's flavor.
  */
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object FlavorModule {
 
     @Singleton

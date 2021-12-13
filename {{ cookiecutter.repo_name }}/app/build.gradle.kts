@@ -10,8 +10,8 @@ apply {
 }
 
 android {
-    compileSdkVersion(Versions.COMPILE_SDK)
-    buildToolsVersion(Versions.BUILD_TOOLS)
+    compileSdk = Versions.COMPILE_SDK
+    buildToolsVersion = Versions.BUILD_TOOLS
 
     signingConfigs {
         create("release") {
@@ -24,8 +24,8 @@ android {
 
     defaultConfig {
         applicationId = App.ID
-        minSdkVersion(Versions.MIN_SDK)
-        targetSdkVersion(Versions.TARGET_SDK)
+        minSdk = Versions.MIN_SDK
+        targetSdk = Versions.TARGET_SDK
         versionCode = App.Version.CODE
         versionName = App.Version.NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -76,12 +76,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 

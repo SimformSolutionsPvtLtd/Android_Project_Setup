@@ -8,7 +8,6 @@ import {{ cookiecutter.package_name }}.utils.Urls
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
@@ -19,6 +18,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
+import dagger.hilt.components.SingletonComponent
 
 private const val HTTP_LOGGING_INTERCEPTOR: String = "HTTP_LOGGING_INTERCEPTOR"
 private const val OKHTTP_CLIENT = "OKHTTP_CLIENT"
@@ -29,7 +29,7 @@ private const val NETWORK_CALL_TIMEOUT: Long = 1 // Minute
  * Provides remote APIs dependencies.
  */
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object ApiModule {
 
     @Singleton

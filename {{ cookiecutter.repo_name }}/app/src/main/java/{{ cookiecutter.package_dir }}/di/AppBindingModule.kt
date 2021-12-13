@@ -7,15 +7,15 @@ import {{ cookiecutter.package_name }}.utils.ResourceHelperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
+import dagger.hilt.components.SingletonComponent
 
 /**
  * Defines all the classes that need to be provided in the scope of the app.
  * If they are singleton mark them as '@Singleton'.
  */
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 abstract class AppBindingModule {
 
     @Singleton
