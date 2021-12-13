@@ -83,12 +83,12 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerAdapter
             viewDataBinding.setVariable(BR.data, data)
             viewDataBinding.setVariable(BR.clickHandler, this)
             setDataForListItem(viewDataBinding, data)
-            setDataForListItemWithPosition(viewDataBinding, data, adapterPosition)
+            setDataForListItemWithPosition(viewDataBinding, data, absoluteAdapterPosition)
             viewDataBinding.executePendingBindings()
         }
 
         override fun onClick(v: View?) {
-            onItemClick(v, adapterPosition)
+            onItemClick(v, absoluteAdapterPosition)
         }
     }
 

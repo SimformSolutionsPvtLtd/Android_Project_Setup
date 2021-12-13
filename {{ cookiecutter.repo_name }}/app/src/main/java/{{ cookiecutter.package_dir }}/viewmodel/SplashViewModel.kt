@@ -23,11 +23,14 @@ import {{ cookiecutter.package_name }}.base.BaseViewModel
 import {{ cookiecutter.package_name }}.utils.result.Event
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 /**
  * ViewModel for [{{ cookiecutter.package_name }}.ui.activity.SplashActivity]
  */
-class SplashViewModel @ViewModelInject constructor() : BaseViewModel() {
+@HiltViewModel
+class SplashViewModel @Inject constructor() : BaseViewModel() {
 
     companion object {
         private const val LAUNCH_DELAY = 3000L

@@ -13,11 +13,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import javax.inject.Inject
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 /**
  * ViewModel for [{{ cookiecutter.package_name }}.ui.activity.SampleActivity]
  */
-class SampleViewModel @ViewModelInject constructor(
+@HiltViewModel
+class SampleViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : BaseViewModel() {
 
