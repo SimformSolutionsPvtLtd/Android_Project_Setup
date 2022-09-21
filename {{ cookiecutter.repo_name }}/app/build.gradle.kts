@@ -114,7 +114,7 @@ dependencies {
     {% endif %}
     // Hilt
     implementation(Libs.HILT)
-    implementation(Libs.HILT_VIEWMODEL)
+   // implementation(Libs.HILT_VIEWMODEL)
     kapt(Libs.HILT_DAGGER_COMPILER)
     kapt(Libs.HILT_COMPILER)
 
