@@ -17,8 +17,8 @@ configurations {
 }
 dependencies {
     checkstyle 'com.puppycrawl.tools:checkstyle:8.39'
-    ktlint "com.pinterest:ktlint:0.40.0"
-    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.15.0'
+    ktlint "com.pinterest:ktlint:0.47.0"
+    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.17.0-RC2'
 }
 def qualityConfigDir = "$project.rootDir/settings/codequality"
 def reportsDir = "$project.rootDir/settings/reports"

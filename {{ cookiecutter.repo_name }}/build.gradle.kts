@@ -2,9 +2,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    repositories {
+     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath(ClassPaths.ANDROID_GRADLE)
@@ -20,7 +20,8 @@ plugins {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        gradlePluginPortal()
         jitPack()
     }
 }
