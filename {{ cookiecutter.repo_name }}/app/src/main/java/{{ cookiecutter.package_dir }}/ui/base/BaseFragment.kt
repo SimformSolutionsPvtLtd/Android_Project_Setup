@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.base
+package {{ cookiecutter.package_name }}.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

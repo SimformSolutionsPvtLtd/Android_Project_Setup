@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.base
+package {{ cookiecutter.package_name }}.data.remote.response
 
 /**
  * Base API response.

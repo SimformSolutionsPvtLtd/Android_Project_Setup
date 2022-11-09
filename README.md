@@ -45,7 +45,7 @@ repo_name | Root Folder name | Repository Name
 package_name | App package name | com.simformsolutions.app
 appcenter_key | AppCenter key | APPCENTER_KEY
 package_dir | Package directory generated based on package name | com/simformsolutions/app
-copyright_year_name | Copyright year and name based on provided app_name | 2021 App Name
+copyright_year_name | Copyright year and name based on provided app_name | 2023 App Name
 include_testing | Include testing in project or not | 1 (n)
 include_room_db | Include Room database or not | 1 (n)
 launch_studio | Open Android Studio after project is created. <b>Works only for MacOS</b> | 1 (false)

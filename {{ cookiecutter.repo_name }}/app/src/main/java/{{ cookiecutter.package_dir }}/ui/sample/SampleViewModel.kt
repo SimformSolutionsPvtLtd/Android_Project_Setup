@@ -1,12 +1,12 @@
-package {{ cookiecutter.package_name }}.viewmodel
+package {{ cookiecutter.package_name }}.ui.sample
 
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import {{ cookiecutter.package_name }}.base.BaseViewModel
+import {{ cookiecutter.package_name }}.ui.base.BaseViewModel
 import {{ cookiecutter.package_name }}.data.repository.UserRepository
-import {{ cookiecutter.package_name }}.model.data.User
+import {{ cookiecutter.package_name }}.data.remote.response.User
 import {{ cookiecutter.package_name }}.utils.result.Event
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -17,7 +17,7 @@ import javax.inject.Inject
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 /**
- * ViewModel for [{{ cookiecutter.package_name }}.ui.activity.SampleActivity]
+ * ViewModel for [{{ cookiecutter.package_name }}.ui.sample.SampleActivity]
  */
 @HiltViewModel
 class SampleViewModel @Inject constructor(

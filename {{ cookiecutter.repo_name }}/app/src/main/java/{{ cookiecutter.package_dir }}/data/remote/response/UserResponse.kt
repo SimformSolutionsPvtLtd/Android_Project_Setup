@@ -1,7 +1,6 @@
-package {{ cookiecutter.package_name }}.model.response
+package {{ cookiecutter.package_name }}.data.remote.response
 
 import com.google.gson.annotations.SerializedName
-import {{ cookiecutter.package_name }}.model.data.User
 
 data class UserResponse(
     @SerializedName("results")

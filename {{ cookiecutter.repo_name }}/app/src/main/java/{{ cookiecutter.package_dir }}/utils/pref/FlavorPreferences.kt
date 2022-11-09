@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.data.local.pref
+package {{ cookiecutter.package_name }}.utils.pref
 
 import android.content.Context
 import android.content.SharedPreferences
