@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.model.data
+package {{ cookiecutter.package_name }}.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 

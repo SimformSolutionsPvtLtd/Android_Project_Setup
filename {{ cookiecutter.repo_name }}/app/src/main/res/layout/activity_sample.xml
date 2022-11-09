@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="{{ cookiecutter.package_name }}.viewmodel.SampleViewModel" />
+            type="{{ cookiecutter.package_name }}.ui.sample.SampleViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activity.SampleActivity">
+        tools:context=".ui.sample.SampleActivity">
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer"
