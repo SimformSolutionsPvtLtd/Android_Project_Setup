@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="{{ cookiecutter.package_name }}.data.remote.response.User" />
+            type="{{ cookiecutter.package_name }}.model.data.User" />
 
     </data>
 

@@ -2,7 +2,7 @@ package {{ cookiecutter.package_name }}.utils
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import {{ cookiecutter.package_name }}.ui.base.BaseRecyclerAdapter
+import {{ cookiecutter.package_name }}.base.BaseRecyclerAdapter
 
 /**
  * Recycler pagination listener invoked [onPageChange] lambda when [itemRemainCount] is reached.

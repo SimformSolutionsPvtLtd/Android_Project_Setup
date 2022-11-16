@@ -5,7 +5,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import {{ cookiecutter.package_name }}.BuildConfig
-import {{ cookiecutter.package_name }}.utils.FlavorDelegate
+import {{ cookiecutter.package_name }}.ui.delegate.FlavorDelegate
 import {{ cookiecutter.package_name }}.utils.ProductFlavor
 import {{ cookiecutter.package_name }}.utils.ProductFlavor.Flavor
 

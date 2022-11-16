@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">{{ cookiecutter.app_name }}</string>
     <string name="profile_image_description">Profile Image</string>
+    <string name="activity_not_found">You may not have a proper app for viewing this content</string>
 </resources>

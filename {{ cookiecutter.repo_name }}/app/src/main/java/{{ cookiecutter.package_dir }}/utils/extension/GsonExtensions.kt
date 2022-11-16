@@ -5,7 +5,7 @@ import com.google.gson.Gson
 /**
  * Converts JSON String to POJO.
  */
-inline fun <reified T> String.toPojo(): T {
+inline fun <reified T> String.toClass(): T {
     return Gson().fromJson(this, T::class.java)
 }
 

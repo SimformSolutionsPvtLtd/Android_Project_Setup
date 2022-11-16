@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:exported="true"
             android:noHistory="true"
             android:theme="@style/AppTheme.Splash">
@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.sample.SampleActivity" />
+        <activity android:name=".ui.activity.SampleActivity" />
     </application>
 
 </manifest>
