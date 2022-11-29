@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.model
+package {{ cookiecutter.package_name }}.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

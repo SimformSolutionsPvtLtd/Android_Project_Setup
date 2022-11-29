@@ -24,7 +24,7 @@ remove_unwanted_files() {
         rm -d -R "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/db/converter"
         rm -d -R "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/db/dao"
         rm "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/db/AppDatabase.kt"
-        rm "app/src/main/java/{{ cookiecutter.package_dir }}/model/DummyEntity.kt"
+        rm "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/entity/DummyEntity.kt"
         echo "Removed Room DB files"
     fi
 }

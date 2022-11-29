@@ -1,7 +1,6 @@
 package {{ cookiecutter.package_name }}.utils.extension
 
 import com.google.gson.Gson
-import {{ cookiecutter.package_name }}.base.BaseResponse
 import retrofit2.HttpException
 import retrofit2.Response
 

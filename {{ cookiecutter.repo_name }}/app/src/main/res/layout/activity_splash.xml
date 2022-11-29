@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="{{ cookiecutter.package_name }}.viewmodel.SplashViewModel" />
+            type="{{ cookiecutter.package_name }}.ui.splash.SplashViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?colorSurface"
-        tools:context=".ui.activity.SplashActivity">
+        tools:context=".ui.splash.SplashActivity">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
