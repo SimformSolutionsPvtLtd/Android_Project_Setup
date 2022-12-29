@@ -36,10 +36,11 @@ object ApiModule {
     @Provides
     @Named(HTTP_LOGGING_INTERCEPTOR)
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-        level = if (BuildConfig.DEBUG)
+        level = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor.Level.BODY
-        else
+        } else {
             HttpLoggingInterceptor.Level.NONE
+        }
     }
 
     @Provides

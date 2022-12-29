@@ -1,5 +1,4 @@
 package {{ cookiecutter.package_name }}.di
-
 {% if cookiecutter.include_room_db == 'y' %}
 import android.content.Context
 import {{ cookiecutter.package_name }}.data.local.db.AppDatabase
@@ -14,7 +13,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 {% endif %}
-
 /**
  * Defines all the classes that need to be provided in the scope of the app.
  * If they are singleton mark them as '@Singleton'.
@@ -27,6 +25,5 @@ object AppModule {% if cookiecutter.include_room_db == 'y' %}{
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
         AppDatabase.buildDatabase(context)
-
 }
 {% endif %}

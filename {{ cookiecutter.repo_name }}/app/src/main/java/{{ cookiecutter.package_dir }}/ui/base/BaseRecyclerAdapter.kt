@@ -65,11 +65,9 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerAdapter
      * This is abstract function used to get set data for recycler list items.
      */
     open fun setDataForListItem(binding: ViewDataBinding, data: T) {
-
     }
 
     open fun setDataForListItemWithPosition(binding: ViewDataBinding, data: T, adapterPosition: Int) {
-
     }
 
     /**
@@ -289,5 +287,4 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerAdapter
      * @return ArrayList<T>
      */
     open fun getFilteredResults(constraint: String): ArrayList<T> = arrayList
-
 }
