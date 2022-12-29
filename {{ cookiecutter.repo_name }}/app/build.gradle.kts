@@ -149,9 +149,6 @@ dependencies {
     // Alerter
     implementation(Libs.ALERTER)
 
-    // Loading Button
-    implementation(Libs.LOADING_BUTTON)
-
     // Shimmer
     implementation(Libs.SHIMMER)
     

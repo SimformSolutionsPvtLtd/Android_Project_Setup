@@ -11,14 +11,16 @@
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 apply plugin: 'com.diffplug.spotless'
+apply plugin: 'io.gitlab.arturbosch.detekt'
 configurations {
     ktlint
     detekt
+    detektPlugins
 }
 dependencies {
     checkstyle 'com.puppycrawl.tools:checkstyle:8.39'
     ktlint "com.pinterest:ktlint:0.47.0"
-    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.17.0-RC2'
+    detektPlugins 'io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0'
 }
 def qualityConfigDir = "$project.rootDir/settings/codequality"
 def reportsDir = "$project.rootDir/settings/reports"
@@ -123,14 +125,10 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 }
 check.dependsOn ktlintFormat
 //detekt
-task detekt(type: JavaExec, group: 'verification') {
-    main = "io.gitlab.arturbosch.detekt.cli.Main"
-    classpath = configurations.detekt
-    def input = "$sourceDir"
-    def config = "$qualityConfigDir/detekt/detekt.yml"
-    def filters = ".*test.*, .*/resources/.*"
-    def params = ['-i', input, '-c', config, '-ex', filters]
-    args(params)
+detekt {
+    config = files("${project.rootDir}/settings/codequality/detekt/detekt.yml")
+    parallel = true
+    basePath = projectDir
 }
 check.dependsOn detekt
 //spotless

@@ -40,4 +40,5 @@ object Versions {
     const val TIMBER = "5.0.1"
     const val TEST_RUNNER = "1.4.0"
     const val TEST_RULES = "1.4.0"
+    const val DETEKT = "1.22.0"
 }

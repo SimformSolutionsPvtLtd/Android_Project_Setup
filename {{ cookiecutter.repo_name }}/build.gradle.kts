@@ -15,13 +15,13 @@ buildscript {
 
 plugins {
     id(Plugins.SPOTLESS) version Versions.SPOTLESS
+    id(Plugins.DETEKT) version Versions.DETEKT
 }
 
 allprojects {
     repositories {
         google()
         mavenCentral()
-        gradlePluginPortal()
         jitPack()
     }
 }
