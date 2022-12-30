@@ -6,21 +6,18 @@ import {{ cookiecutter.package_name }}.ui.base.BaseRecyclerAdapter
 import {{ cookiecutter.package_name }}.data.remote.response.User
 
 class UserAdapter : BaseRecyclerAdapter<User>() {
-    override fun getLayoutIdForType(viewType: Int): Int = R.layout.item_user
+    override fun getLayoutIdForType(viewType: Int): Int = if (viewType == ITEM_TYPE_NORMAL)
+        R.layout.item_user
+    else
+        R.layout.layout_loader
 
-    override fun onItemClick(view: View?, adapterPosition: Int) {
-        /* no-op */
-    }
+    override fun onItemClick(view: View?, position: Int) { /* no-op */ }
 
-    override fun areItemsSame(oldItem: User, newItem: User): Boolean {
-        return oldItem == newItem
-    }
-
-    override fun getLayoutIdForLoading(viewType: Int): Int = R.layout.layout_loader
+    override fun areItemsSame(firstItem: User, secondItem: User): Boolean = firstItem == secondItem
 
     override fun isLastItemLoading(): Boolean = arrayList.lastOrNull()?.login?.uuid.isNullOrBlank()
 
-    override fun isItemLoading(position: Int): Boolean = arrayList[position].login.uuid.isBlank()
+    override fun isItemLoading(index: Int): Boolean = arrayList[index].login.uuid.isBlank()
 
     override fun getLoaderItem(): User = User()
 }

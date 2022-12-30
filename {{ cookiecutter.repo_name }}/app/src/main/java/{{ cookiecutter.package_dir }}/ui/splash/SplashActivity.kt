@@ -17,8 +17,8 @@ class SplashActivity : BaseAppCompatActivity<ActivitySplashBinding, SplashViewMo
 
     override fun getLayoutResId(): Int = R.layout.activity_splash
 
-    override fun initializeObservers(viewModel: SplashViewModel) {
-        super.initializeObservers(viewModel)
+    override fun setupViewModel() {
+        super.setupViewModel()
 
         viewModel.goToScreen.observeEvent(this) { destination ->
             when (destination) {

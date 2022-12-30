@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import {{ cookiecutter.package_name }}.BR
 
 /**
- * Base fragment for all fragments.
+ * Base fragment for all fragments
  */
 abstract class BaseFragment<Binding : ViewDataBinding, ViewModel : BaseViewModel> : Fragment() {
 
@@ -29,38 +29,36 @@ abstract class BaseFragment<Binding : ViewDataBinding, ViewModel : BaseViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindViewModel()
+        setupUi()
+        setupViewModel()
         initialize()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        initializeObservers(viewModel)
-        super.onActivityCreated(savedInstanceState)
-    }
-
     /**
-     * Initialize observers for [ViewModel].
-     *
-     * @param viewModel
-     */
-    open fun initializeObservers(viewModel: ViewModel) {}
-
-    /**
-     * This function will be executed when onCreate() is called.
-     */
-    open fun initialize() {}
-
-    /**
-     * Get the layout resource ID for the screen.
+     * Get the layout resource ID for the fragment
      */
     @LayoutRes
     abstract fun getLayoutResId(): Int
 
-    private fun bindViewModel() {
-        binding.apply {
-            lifecycleOwner = this@BaseFragment
-            setVariable(BR.viewModel, viewModel)
-        }
-        binding.executePendingBindings()
+    /**
+     * Setup [ViewModel]
+     */
+    open fun setupViewModel() {}
+
+    /**
+     * Called when onCreate() is executed.
+     * This method will be called after setupUi() and setupViewModel() has been executed
+     * @see setupUi
+     * @see setupViewModel
+     */
+    open fun initialize() {}
+
+    /**
+     * Setup the UI
+     */
+    private fun setupUi() = with(binding) {
+        lifecycleOwner = this@BaseFragment
+        setVariable(BR.viewModel, viewModel)
+        executePendingBindings()
     }
 }

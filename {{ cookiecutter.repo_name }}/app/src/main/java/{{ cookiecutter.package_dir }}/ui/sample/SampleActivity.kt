@@ -25,8 +25,8 @@ class SampleActivity : BaseAppCompatActivity<ActivitySampleBinding, SampleViewMo
         binding.rvUsers.addOnScrollListener(paginationListener)
     }
 
-    override fun initializeObservers(viewModel: SampleViewModel) {
-        super.initializeObservers(viewModel)
+    override fun setupViewModel() {
+        super.setupViewModel()
 
         binding.shimmer.startShimmer()
 

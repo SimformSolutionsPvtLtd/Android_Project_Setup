@@ -14,70 +14,21 @@ import {{ cookiecutter.package_name }}.BR
 /**
  * Base recycler adapter for all recycler adapters.
  */
- @Suppress("TooManyFunctions")
-abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerAdapter<T>.RecyclerHolder>(), Filterable {
-    private val arrayListFiltered = ArrayList<T>()
-    private val itemTypeNormal = 1
-    private val itemTypeLoader = 2
-    private var filteredText = ""
-    protected val arrayList = ArrayList<T>()
-    protected val previousArrayList = ArrayList<T>()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerHolder {
-        val binding: ViewDataBinding = if (viewType == itemTypeNormal) {
-            DataBindingUtil.inflate(LayoutInflater.from(parent.context), getLayoutIdForType(viewType), parent, false)
-        } else {
-            DataBindingUtil.inflate(LayoutInflater.from(parent.context), getLayoutIdForLoading(viewType), parent, false)
-        }
-        return RecyclerHolder(binding)
-    }
-
-    override fun getItemCount(): Int = arrayList.size
-
-    override fun getItemViewType(position: Int): Int = if (isItemLoading(position)) {
-        itemTypeLoader
-    } else {
-        itemTypeNormal
-    }
-
-    override fun onBindViewHolder(holder: RecyclerHolder, position: Int) {
-        holder.bind(arrayList[position])
-    }
-
+@Suppress("TooManyFunctions")
+abstract class BaseRecyclerAdapter<T> :
+    RecyclerView.Adapter<BaseRecyclerAdapter<T>.RecyclerHolder>(), Filterable {
     /**
-     * This is abstract function used to get view type for adapter
+     * Inner class to set recycler view holder
+     *
+     * @param viewDataBinding   The [ViewDataBinding] instance
      */
-    open fun getLayoutIdForType(viewType: Int): Int = 0
-
-    /**
-     * This fun is used to get layout for loader.
-     * @param viewType Int
-     * @return Int
-     */
-    open fun getLayoutIdForLoading(viewType: Int): Int = 0
-
-    /**
-     * This is abstract function used to get item click for all the adapter views
-     */
-    abstract fun onItemClick(view: View?, adapterPosition: Int)
-
-    /**
-     * This is abstract function used to get set data for recycler list items.
-     */
-    open fun setDataForListItem(binding: ViewDataBinding, data: T) {
-
-    }
-
-    open fun setDataForListItemWithPosition(binding: ViewDataBinding, data: T, adapterPosition: Int) {
-
-    }
-
-    /**
-     * This is inner class used to set recycler view holder.
-     */
-    inner class RecyclerHolder(private val viewDataBinding: ViewDataBinding) : RecyclerView.ViewHolder(viewDataBinding.root), View.OnClickListener {
+    inner class RecyclerHolder(
+        private val viewDataBinding: ViewDataBinding
+    ) : RecyclerView.ViewHolder(viewDataBinding.root), View.OnClickListener {
         /**
-         * This function is used to bind recycler data particular row wise.
+         * Bind the holder with [data]
+         *
+         * @param data  The data to bind
          */
         fun bind(data: T) {
             viewDataBinding.setVariable(BR.data, data)
@@ -93,201 +44,268 @@ abstract class BaseRecyclerAdapter<T> : RecyclerView.Adapter<BaseRecyclerAdapter
     }
 
     /**
-     * This fun is used to save list
-     * @param newList ArrayList<T>
+     * Base class for [DiffUtil] to calculate difference between old and new list
+     *
+     * @param oldList   The old list
+     * @param newList   The new list
      */
-    fun setList(newList: List<T>) {
-        val diffResult = DiffUtil.calculateDiff(BaseDiffUtil(arrayList, newList))
-        if (arrayList.size >= previousArrayList.size) {
-            previousArrayList.clear()
-            previousArrayList.addAll(arrayList)
-        }
-        arrayList.clear()
-        arrayList.addAll(newList)
-        diffResult.dispatchUpdatesTo(this)
-    }
-
-    /**
-     * This fun is used to add all items in list
-     * @param newList ArrayList<T>
-     */
-    fun addAllItem(newList: List<T>) {
-        val newTempList = ArrayList(arrayList)
-        newTempList.addAll(newList)
-        val diffResult = DiffUtil.calculateDiff(BaseDiffUtil(arrayList, newTempList))
-        arrayList.clear()
-        arrayList.addAll(newTempList)
-        diffResult.dispatchUpdatesTo(this)
-    }
-
-    /**
-     * This fun is used to remove item from list
-     * @param item T
-     */
-    fun removeItem(item: T) {
-        val newList = ArrayList(arrayList)
-        newList.remove(item)
-        setList(newList)
-    }
-
-    /**
-     * This fun is used to add item
-     * @param item T
-     */
-    fun addItem(item: T) {
-        val newList = ArrayList(arrayList)
-        newList.add(item)
-        setList(newList)
-    }
-
-    /**
-     * This fun is used to add item at specific position
-     * @param index Int
-     * @param item T
-     */
-    fun addItemAt(index: Int, item: T) {
-        val newList = ArrayList(arrayList)
-        newList.add(index, item)
-        setList(newList)
-    }
-
-    /**
-     * This fun is used to set item at specific position
-     * @param index Int
-     * @param item T
-     */
-    fun setItemAt(index: Int, item: T) {
-        arrayList[index] = item
-        notifyItemChanged(index)
-    }
-
-    /**
-     * This fun is used to remove item from specific position
-     * @param index Int
-     */
-    fun removeItem(index: Int) {
-        val newList = ArrayList(arrayList)
-        newList.removeAt(index)
-        setList(newList)
-    }
-
-    /**
-     * This class is used to get all data from adapter
-     * @return ArrayList<T>
-     */
-    fun getListItems(): ArrayList<T> = arrayList
-
-    /**
-     * This fun is used to clear list
-     */
-    fun clearList() {
-        val diffResult = DiffUtil.calculateDiff(BaseDiffUtil(arrayList, ArrayList()))
-        arrayList.clear()
-        arrayList.addAll(ArrayList())
-        diffResult.dispatchUpdatesTo(this)
-    }
-
-    /**
-     * This class is used as diff util base class.
-     * @property oldList ArrayList<T>
-     * @property newList ArrayList<T>
-     * @constructor
-     */
-    inner class BaseDiffUtil(private val oldList: List<T>, private val newList: List<T>) : DiffUtil.Callback() {
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = areItemsSame(oldList[oldItemPosition], newList[newItemPosition])
+    inner class BaseDiffUtil(
+        private val oldList: List<T>,
+        private val newList: List<T>
+    ) : DiffUtil.Callback() {
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+            areItemsSame(oldList[oldItemPosition], newList[newItemPosition])
 
         override fun getOldListSize(): Int = oldList.size
 
         override fun getNewListSize(): Int = newList.size
 
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean = oldList[oldItemPosition] == newList[newItemPosition]
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
+            areContentsSame(oldList[oldItemPosition], newList[newItemPosition])
+    }
+
+    private val arrayListFiltered = ArrayList<T>()
+    private var filteredText = ""
+    protected val arrayList = ArrayList<T>()
+    protected val previousArrayList = ArrayList<T>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerHolder {
+        val binding: ViewDataBinding =
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                getLayoutIdForType(viewType),
+                parent,
+                false
+            )
+        return RecyclerHolder(binding)
+    }
+
+    override fun getItemCount(): Int = arrayList.size
+
+    override fun getItemViewType(position: Int): Int = if (isItemLoading(position)) {
+        ITEM_TYPE_LOADER
+    } else {
+        ITEM_TYPE_NORMAL
+    }
+
+    override fun onBindViewHolder(holder: RecyclerHolder, position: Int) {
+        holder.bind(arrayList[position])
+    }
+
+    override fun getFilter(): Filter = object : Filter() {
+        override fun performFiltering(charSequence: CharSequence): FilterResults {
+            filteredText = charSequence.toString()
+            arrayListFiltered.clear()
+            arrayListFiltered.addAll(
+                if (filteredText.isBlank()) previousArrayList else getFilteredResults(filteredText)
+            )
+            return FilterResults().apply { values = arrayListFiltered }
+        }
+
+        override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
+            setItems(arrayListFiltered)
+        }
     }
 
     /**
-     * This fun is used to get list item same or not.
-     * @param oldItem T
-     * @param newItem T
-     * @return Boolean
+     * Get the layout id for required [viewType]
+     *
+     * @param viewType  The view type to get layout id
+     *
+     * @return The layout id of the required view type
      */
-    abstract fun areItemsSame(oldItem: T, newItem: T): Boolean
+    abstract fun getLayoutIdForType(viewType: Int): Int
 
     /**
-     * This fun is return loader item
-     * @return T?
+     * Callback on item clicked
+     *
+     * @param view      The view that is clicked
+     * @param position  The position of the [view] clicked
+     */
+    abstract fun onItemClick(view: View?, position: Int)
+
+    /**
+     * Compares [firstItem] with [secondItem]
+     *
+     * @param firstItem     First item
+     * @param secondItem    Second item
+     *
+     * @return A [Boolean] representing true if both items are same, otherwise false
+     */
+    abstract fun areItemsSame(firstItem: T, secondItem: T): Boolean
+
+    /**
+     * Compares the contents of the [firstItem] with [secondItem]
+     *
+     * @param firstItem     First item
+     * @param secondItem    Second item
+     *
+     * @return A [Boolean] representing true if contents of both items are same, otherwise false
+     */
+    protected open fun areContentsSame(firstItem: T, secondItem: T): Boolean =
+        firstItem == secondItem
+
+    /**
+     * Set the list item with [data]
+     *
+     * @param binding   The [ViewDataBinding] instance
+     * @param data      The data to set
+     */
+    protected open fun setDataForListItem(binding: ViewDataBinding, data: T) { }
+
+    /**
+     * Set the list item with [data] at [position]
+     *
+     * @param binding   The [ViewDataBinding] instance
+     * @param data      The data to set
+     * @param position  The position at which [data] should be added
+     */
+    protected open fun setDataForListItemWithPosition(
+        binding: ViewDataBinding,
+        data: T,
+        position: Int
+    ) { }
+
+    /**
+     * Get the loader item
+     *
+     * @return The loader item
      */
     protected open fun getLoaderItem(): T? = null
 
     /**
-     * This fun is used to add pagination loader.
-     */
-    fun addLoader() {
-        if (!isLoading()) {
-            val newList = ArrayList<T>(arrayList)
-            getLoaderItem()?.let { newList.add(it) }
-            setList(newList)
-        }
-    }
-
-    /**
-     * This fun is used to pagination remove loader
-     */
-    fun removeLoader() {
-        if (isLoading()) {
-            if (arrayList.isNotEmpty()) {
-                val newList = ArrayList<T>(arrayList)
-                newList.remove(getLoaderItem())
-                setList(newList)
-            }
-        }
-    }
-
-    /**
-     * This fun is used to know item is loading or not.
-     * @return Boolean
+     * Check if item is loading or not
+     *
+     * @return A [Boolean] representing true if item is loading, otherwise false
      */
     internal open fun isLoading(): Boolean = arrayList.isEmpty() || isLastItemLoading()
 
     /**
-     * This fun is used to returns that last item is loading or not
-     * @return Boolean
+     * Check if last item is loading or not
+     *
+     * @return A [Boolean] representing true if last item is loading, otherwise false
      */
     open fun isLastItemLoading(): Boolean = false
 
     /**
-     * This fun is used to get particular item is loading or not.
-     * @param position Int
-     * @return Boolean
+     * Check if item at [index] is loading or not
+     *
+     * @param index Index of the item to check
+     *
+     * @return A [Boolean] representing true if item is loading, otherwise false
      */
-    open fun isItemLoading(position: Int): Boolean = false
+    open fun isItemLoading(index: Int): Boolean = false
 
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(charSequence: CharSequence): FilterResults {
-                filteredText = charSequence.toString()
-                if (filteredText.isBlank()) {
-                    arrayListFiltered.clear()
-                    arrayListFiltered.addAll(previousArrayList)
-                } else {
-                    arrayListFiltered.clear()
-                    arrayListFiltered.addAll(getFilteredResults(filteredText))
-                }
-                val filterResults = FilterResults()
-                filterResults.values = arrayListFiltered
-                filterResults.count = arrayListFiltered.size
-                return filterResults
-            }
+    /**
+     * Get the filtered results
+     *
+     * @param filteredText  The text to filter
+     *
+     * @return The [ArrayList] of filtered list
+     */
+    open fun getFilteredResults(filteredText: String): ArrayList<T> = arrayList
 
-            override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
-                setList(arrayListFiltered)
-            }
+    // Region add item(s)
+    /**
+     * Add the [item]
+     *
+     * @param item  The item to add
+     */
+    fun addItem(item: T) =
+        setItems(arrayList.toMutableList().apply { add(item) })
+
+    /**
+     * Add the [item] at [index]
+     *
+     * @param item  The item to add
+     * @param index Index of the [item]
+     */
+    fun addItemAt(index: Int, item: T) =
+        setItems(arrayList.toMutableList().apply { add(index, item) })
+
+    /**
+     * Add all the items in recycler view
+     *
+     * @param newList   The [List] to add
+     */
+    fun addAllItem(newList: List<T>) =
+        setItems(arrayList.toMutableList().apply { addAll(newList) })
+
+    /**
+     * Add the pagination loader
+     */
+    fun addLoader() {
+        if (isLoading()) return
+        getLoaderItem()?.let {
+            setItems(arrayList.toMutableList().apply { add(it) })
         }
+    }
+    // End region
+
+    // Region remove item(s)
+    /**
+     * Remove the [item]
+     *
+     * @param item  The item to remove
+     */
+    fun removeItem(item: T) =
+        setItems(arrayList.toMutableList().apply { remove(item) })
+
+    /**
+     * Remove the item at [index]
+     *
+     * @param index The index of item to remove
+     */
+    fun removeItemAt(index: Int) =
+        setItems(arrayList.toMutableList().apply { removeAt(index) })
+
+    /**
+     * Remove all the items
+     */
+    fun removeAllItems() = setItems(listOf())
+
+    /**
+     * Remove the pagination loader
+     */
+    fun removeLoader() {
+        if (!isLoading()) return
+        if (arrayList.isEmpty()) return
+        getLoaderItem()?.let {
+            setItems(arrayList.toMutableList().apply { remove(it) })
+        }
+    }
+    // End region
+
+    /**
+     * Update the item at [index]
+     *
+     * @param item  New item to set
+     * @param index Index of the [item]
+     */
+    fun updateItemAt(index: Int, item: T) {
+        arrayList[index] = item
+        notifyItemChanged(index)
     }
 
     /**
-     * This fun is used to get filtered result.
-     * @param constraint String
-     * @return ArrayList<T>
+     * Sets the list in recycler view
+     *
+     * @param newList   The [List] to set
      */
-    open fun getFilteredResults(constraint: String): ArrayList<T> = arrayList
+    private fun setItems(newList: List<T>) {
+        if (arrayList.size >= previousArrayList.size) {
+            previousArrayList.clear()
+            previousArrayList.addAll(arrayList)
+        }
+        DiffUtil.calculateDiff(BaseDiffUtil(arrayList, newList)).apply {
+            arrayList.clear()
+            arrayList.addAll(newList)
+            dispatchUpdatesTo(this@BaseRecyclerAdapter)
+        }
+    }
 
+    companion object {
+        const val ITEM_TYPE_NORMAL = 1
+        const val ITEM_TYPE_LOADER = 2
+    }
 }
