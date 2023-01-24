@@ -6,6 +6,25 @@ import androidx.core.content.edit
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
+/**
+ * Shared preference delegated property for int values. Use this class to store and retrive
+ * int value from shared preference just like a normal variable.
+ * Usage:
+ * ```
+ * // Lazy variable for shared preference
+ * val lazySharedPreferences = lazy { getSharedPreferences(...) }
+ * // Delegated property
+ * var numberOfRegisterations by IntPreference(lazySharedPreferences, key, defaultValue)
+ *
+ * // Set value
+ * numberOfRegisterations = 1000
+ * // Get value
+ * if (numberOfRegisterations >= 1000)
+ *     onRegisterationsFull()
+ * else
+ *     onRegisterationsOpen()
+ * ```
+ */
 class IntPreference(
     private val preferences: Lazy<SharedPreferences>,
     private val name: String,
