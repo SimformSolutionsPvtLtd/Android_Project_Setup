@@ -6,6 +6,25 @@ import androidx.core.content.edit
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
+/**
+ * Shared preference delegated property for string values. Use this class to store and retrive
+ * string value from shared preference just like a normal variable.
+ * Usage:
+ * ```
+ * // Lazy variable for shared preference
+ * val lazySharedPreferences = lazy { getSharedPreferences(...) }
+ * // Delegated property
+ * var userId by StringPreference(lazySharedPreferences, key, defaultValue)
+ *
+ * // Set value
+ * userId = "user101"
+ * // Get value
+ * if (userId == "user101")
+ *     showUserGrantedDialog()
+ * else
+ *     showUserDeniedDialog()
+ * ```
+ */
 class StringPreference(
     private val preferences: Lazy<SharedPreferences>,
     private val name: String,

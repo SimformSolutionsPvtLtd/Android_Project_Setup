@@ -16,7 +16,27 @@ import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 /**
- * Flavor shared preferences.
+ * Shared preference delegated property for product flavor. Use this class to change
+ * product flavor runtime.
+ * Usage:
+ * ```
+ * // Lazy variable for shared preference
+ * val lazySharedPreferences = lazy { getSharedPreferences(...) }
+ * // Delegated property
+ * var productFlavor by FlavorPreferencesImpl.FlavorPreference(
+ *     lazySharedPrefs,
+ *     ProductFlavor.Flavor.PRODUCTION.name,
+ *     defaultProductFlavor
+ * )
+ *
+ * // Set value
+ * productFlavor = ProductFlavor.Flavor.QA
+ * // Get value
+ * if (productFlavor == ProductFlavor.Flavor.PRODUCTION)
+ *     fetchProductionApi()
+ * else if (productFlavor == ProductFlavor.Flavor.QA)
+ *     fetchQaApi()
+ * ```
  */
 interface FlavorPreferences {
     var flavor: ProductFlavor.Flavor

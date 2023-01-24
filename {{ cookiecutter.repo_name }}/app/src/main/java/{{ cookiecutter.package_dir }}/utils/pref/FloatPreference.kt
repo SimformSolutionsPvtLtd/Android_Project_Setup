@@ -6,6 +6,25 @@ import androidx.core.content.edit
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
+/**
+ * Shared preference delegated property for float values. Use this class to store and retrive
+ * float value from shared preference just like a normal variable.
+ * Usage:
+ * ```
+ * // Lazy variable for shared preference
+ * val lazySharedPreferences = lazy { getSharedPreferences(...) }
+ * // Delegated property
+ * var percentComplete by FloatPreference(lazySharedPreferences, key, defaultValue)
+ *
+ * // Set value
+ * percentComplete = 100f
+ * // Get value
+ * if (percentComplete == 100f)
+ *     showTutorialCompleteDialog()
+ * else
+ *     showTutorialIncompleteDialog()
+ * ```
+ */
 class FloatPreference(
     private val preferences: Lazy<SharedPreferences>,
     private val name: String,
