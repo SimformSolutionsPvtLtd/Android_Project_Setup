@@ -2,23 +2,24 @@ package {{ cookiecutter.package_name }}.di
 
 import android.content.Context
 import {{ cookiecutter.package_name }}.BuildConfig
-import {{ cookiecutter.package_name }}.utils.pref.FlavorPreferences
 import {{ cookiecutter.package_name }}.data.remote.ApiService
+import {{ cookiecutter.package_name }}.data.remote.apirequest.ApiResultCallAdapterFactory
 import {{ cookiecutter.package_name }}.utils.Urls
+import {{ cookiecutter.package_name }}.utils.pref.FlavorPreferences
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.util.concurrent.TimeUnit
-import javax.inject.Named
-import javax.inject.Singleton
+import dagger.hilt.components.SingletonComponent
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
-import dagger.hilt.components.SingletonComponent
+import java.util.concurrent.TimeUnit
+import javax.inject.Named
+import javax.inject.Singleton
 
 private const val HTTP_LOGGING_INTERCEPTOR: String = "HTTP_LOGGING_INTERCEPTOR"
 private const val OKHTTP_CLIENT = "OKHTTP_CLIENT"
@@ -57,7 +58,8 @@ object ApiModule {
     @Provides
     fun provideRetrofit(
         @Named(OKHTTP_CLIENT) okHttpClient: OkHttpClient,
-        flavorPreferences: FlavorPreferences
+        flavorPreferences: FlavorPreferences,
+        apiResultCallAdapterFactory: ApiResultCallAdapterFactory
     ): ApiService = Retrofit.Builder()
         .baseUrl(
             Urls.getBaseUrl(flavorPreferences.flavor)
@@ -65,6 +67,7 @@ object ApiModule {
         )
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(apiResultCallAdapterFactory)
         .build()
         .create(ApiService::class.java)
 }

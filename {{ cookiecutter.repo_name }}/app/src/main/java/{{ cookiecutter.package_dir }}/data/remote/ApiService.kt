@@ -1,7 +1,7 @@
 package {{ cookiecutter.package_name }}.data.remote
 
+import {{ cookiecutter.package_name }}.data.remote.apirequest.ApiResult
 import {{ cookiecutter.package_name }}.data.remote.response.UserResponse
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -10,5 +10,5 @@ import retrofit2.http.Query
  */
 interface ApiService {
     @GET("?inc=name,location,picture,login&results=10&seed=abc")
-    suspend fun loadUsers(@Query("page") page: Int): Response<UserResponse>
+    suspend fun loadUsers(@Query("page") page: Int): ApiResult<UserResponse>
 }
