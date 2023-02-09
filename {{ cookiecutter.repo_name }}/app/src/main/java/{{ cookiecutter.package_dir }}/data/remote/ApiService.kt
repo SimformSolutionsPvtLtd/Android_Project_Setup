@@ -1,6 +1,6 @@
 package {{ cookiecutter.package_name }}.data.remote
 
-import {{ cookiecutter.package_name }}.data.remote.apirequest.ApiResult
+import {{ cookiecutter.package_name }}.data.remote.apiresult.ApiResult
 import {{ cookiecutter.package_name }}.data.remote.response.UserResponse
 import retrofit2.http.GET
 import retrofit2.http.Query

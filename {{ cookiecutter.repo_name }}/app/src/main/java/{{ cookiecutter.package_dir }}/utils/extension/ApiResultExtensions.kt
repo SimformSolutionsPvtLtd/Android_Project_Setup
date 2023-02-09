@@ -1,9 +1,9 @@
 package {{ cookiecutter.package_name }}.utils.extension
 
-import {{ cookiecutter.package_name }}.data.remote.apirequest.ApiError
-import {{ cookiecutter.package_name }}.data.remote.apirequest.ApiException
-import {{ cookiecutter.package_name }}.data.remote.apirequest.ApiResult
-import {{ cookiecutter.package_name }}.data.remote.apirequest.ApiSuccess
+import {{ cookiecutter.package_name }}.data.remote.apiresult.ApiError
+import {{ cookiecutter.package_name }}.data.remote.apiresult.ApiException
+import {{ cookiecutter.package_name }}.data.remote.apiresult.ApiResult
+import {{ cookiecutter.package_name }}.data.remote.apiresult.ApiSuccess
 
 /**
  * Execute [executable] if the [ApiResult] is of type [ApiResult.ApiSuccess]

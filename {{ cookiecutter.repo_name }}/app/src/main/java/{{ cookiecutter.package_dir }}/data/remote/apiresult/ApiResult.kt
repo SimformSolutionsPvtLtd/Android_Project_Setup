@@ -1,4 +1,4 @@
-package {{ cookiecutter.package_name }}.data.remote.apirequest
+package {{ cookiecutter.package_name }}.data.remote.apiresult
 
 import {{ cookiecutter.package_name }}.data.remote.ApiService
 
