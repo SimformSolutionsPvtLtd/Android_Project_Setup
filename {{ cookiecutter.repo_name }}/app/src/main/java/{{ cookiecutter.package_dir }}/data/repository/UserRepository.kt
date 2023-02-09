@@ -1,7 +1,7 @@
 package {{ cookiecutter.package_name }}.data.repository
 
 import {{ cookiecutter.package_name }}.data.remote.ApiService
-import {{ cookiecutter.package_name }}.data.remote.apirequest.ApiResult
+import {{ cookiecutter.package_name }}.data.remote.apiresult.ApiResult
 import {{ cookiecutter.package_name }}.data.remote.response.UserResponse
 import javax.inject.Inject
 import javax.inject.Singleton

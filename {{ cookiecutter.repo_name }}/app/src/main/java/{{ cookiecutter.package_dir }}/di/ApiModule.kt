@@ -3,7 +3,7 @@ package {{ cookiecutter.package_name }}.di
 import android.content.Context
 import {{ cookiecutter.package_name }}.BuildConfig
 import {{ cookiecutter.package_name }}.data.remote.ApiService
-import {{ cookiecutter.package_name }}.data.remote.apirequest.ApiResultCallAdapterFactory
+import {{ cookiecutter.package_name }}.data.remote.apiresult.ApiResultCallAdapterFactory
 import {{ cookiecutter.package_name }}.utils.Urls
 import {{ cookiecutter.package_name }}.utils.pref.FlavorPreferences
 import dagger.Module
