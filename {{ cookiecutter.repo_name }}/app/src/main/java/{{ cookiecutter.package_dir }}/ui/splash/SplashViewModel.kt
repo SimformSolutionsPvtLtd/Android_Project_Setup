@@ -1,6 +1,5 @@
 package {{ cookiecutter.package_name }}.ui.splash
 
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

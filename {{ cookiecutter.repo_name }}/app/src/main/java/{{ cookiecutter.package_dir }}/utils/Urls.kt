@@ -11,7 +11,7 @@ object Urls {
     /**
      * Get Base URL for [flavor].
      */
-    fun getBaseUrl(flavor: ProductFlavor.Flavor): String = when(flavor) {
+    fun getBaseUrl(flavor: ProductFlavor.Flavor): String = when (flavor) {
         ProductFlavor.Flavor.DEV -> BASE_DEV
         ProductFlavor.Flavor.QA -> BASE_QA
         ProductFlavor.Flavor.PRODUCTION -> BASE_PRODUCTION

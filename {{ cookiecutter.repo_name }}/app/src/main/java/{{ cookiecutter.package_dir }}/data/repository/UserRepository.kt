@@ -16,7 +16,7 @@ interface UserRepository {
 @Singleton
 class UserRepositoryImpl @Inject constructor(
     private val apiService: ApiService
-): UserRepository {
+) : UserRepository {
     override suspend fun loadUsers(page: Int): ApiResult<UserResponse> =
         apiService.loadUsers(page)
 }

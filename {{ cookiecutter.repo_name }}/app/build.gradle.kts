@@ -29,12 +29,13 @@ android {
         versionCode = App.Version.CODE
         versionName = App.Version.NAME
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        {%- if cookiecutter.include_room_db == 'y' %}
 
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments["room.incremental"] = "true"
             }
-        }
+        }{% endif %}
     }
 
     buildTypes {
@@ -114,7 +115,6 @@ dependencies {
     {% endif %}
     // Hilt
     implementation(Libs.HILT)
-   // implementation(Libs.HILT_VIEWMODEL)
     kapt(Libs.HILT_DAGGER_COMPILER)
     kapt(Libs.HILT_COMPILER)
 
@@ -141,17 +141,11 @@ dependencies {
     // Timber
     implementation(Libs.TIMBER)
 
-    // Easy permissions
-    implementation(Libs.EASY_PERMISSIONS)
-
     // Kotlin Reflect
     implementation(kotlin(Libs.REFLECT))
 
     // Alerter
     implementation(Libs.ALERTER)
-
-    // Loading Button
-    implementation(Libs.LOADING_BUTTON)
 
     // Shimmer
     implementation(Libs.SHIMMER)

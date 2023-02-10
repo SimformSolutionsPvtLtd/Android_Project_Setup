@@ -21,19 +21,19 @@ import {{ cookiecutter.package_name }}.data.remote.ApiService
  *         }
  * ```
  */
-interface ApiResult<T: Any>
+interface ApiResult<T : Any>
 
 /**
  * Denotes API success
  */
-data class ApiSuccess<T: Any>(val data: T) : ApiResult<T>
+data class ApiSuccess<T : Any>(val data: T) : ApiResult<T>
 
 /**
  * Denotes error while making an API call
  */
-data class ApiError<T: Any>(val code: Int, val message: String?) : ApiResult<T>
+data class ApiError<T : Any>(val code: Int, val message: String?) : ApiResult<T>
 
 /**
  * Denotes exception generated while making an API call
  */
-data class ApiException<T: Any>(val exception: Throwable) : ApiResult<T>
+data class ApiException<T : Any>(val exception: Throwable) : ApiResult<T>

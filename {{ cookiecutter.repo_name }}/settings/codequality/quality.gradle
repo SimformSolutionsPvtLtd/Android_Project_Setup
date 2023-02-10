@@ -11,14 +11,15 @@
 apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 apply plugin: 'com.diffplug.spotless'
+apply plugin: 'io.gitlab.arturbosch.detekt'
 configurations {
     ktlint
-    detekt
+    detektPlugins
 }
 dependencies {
     checkstyle 'com.puppycrawl.tools:checkstyle:8.39'
-    ktlint "com.pinterest:ktlint:0.40.0"
-    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.15.0'
+    ktlint "com.pinterest:ktlint:0.47.0"
+    detektPlugins 'io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0'
 }
 def qualityConfigDir = "$project.rootDir/settings/codequality"
 def reportsDir = "$project.rootDir/settings/reports"
@@ -67,7 +68,7 @@ android {
         // To enable checks for only a subset of issue IDs and ignore all others,
         // list the issue IDs with the 'check' property instead. This property overrides
         // any issue IDs you enable or disable using the properties above.
-        check 'InlinedApi', 'HandlerLeak'
+        checkOnly 'InlinedApi', 'HandlerLeak'
         // If set to true, turns off analysis progress reporting by lint.
         quiet true
         abortOnError true
@@ -123,14 +124,10 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 }
 check.dependsOn ktlintFormat
 //detekt
-task detekt(type: JavaExec, group: 'verification') {
-    main = "io.gitlab.arturbosch.detekt.cli.Main"
-    classpath = configurations.detekt
-    def input = "$sourceDir"
-    def config = "$qualityConfigDir/detekt/detekt.yml"
-    def filters = ".*test.*, .*/resources/.*"
-    def params = ['-i', input, '-c', config, '-ex', filters]
-    args(params)
+detekt {
+    config = files("$qualityConfigDir/detekt/detekt.yml")
+    parallel = true
+    basePath = projectDir
 }
 check.dependsOn detekt
 //spotless

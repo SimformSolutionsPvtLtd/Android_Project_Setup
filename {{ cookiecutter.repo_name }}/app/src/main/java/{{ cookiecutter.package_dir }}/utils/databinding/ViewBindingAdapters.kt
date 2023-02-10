@@ -46,4 +46,3 @@ fun imageUri(imageView: ImageView, imageUri: Uri?, placeholder: Drawable?) {
 fun imageUrl(imageView: ImageView, imageUrl: String?, placeholder: Drawable?) {
     imageUri(imageView, imageUrl?.toUri(), placeholder)
 }
-
