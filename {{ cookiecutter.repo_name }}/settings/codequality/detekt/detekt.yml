@@ -250,8 +250,8 @@ formatting:
     active: true
     autoCorrect: true
   MultiLineIfElse:
-    active: true
-    autoCorrect: true
+    active: false
+    autoCorrect: false
   NoBlankLineBeforeRbrace:
     active: true
     autoCorrect: true
@@ -582,7 +582,7 @@ style:
     active: false
     acceptableDecimalLength: 5
   UnnecessaryAbstractClass:
-    active: true
+    active: false
     excludeAnnotatedClasses: ['dagger.Module']
   UnnecessaryAnnotationUseSiteTarget:
     active: false

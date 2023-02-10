@@ -59,17 +59,11 @@ object Libs {
     // Gson
     const val GSON = "com.google.code.gson:gson:${Versions.GSON}"
 
-    // Easy permissions
-    const val EASY_PERMISSIONS = "pub.devrel:easypermissions:${Versions.EASY_PERMISSIONS}"
-
     // Kotlin Reflect
     const val REFLECT = "reflect"
 
     // Alerter
     const val ALERTER = "com.github.tapadoo:alerter:${Versions.ALERTER}"
-
-    // Loading Button
-    const val LOADING_BUTTON = "br.com.simplepass:loading-button-android:${Versions.LOADING_BUTTON}"
 
     // Shimmer
     const val SHIMMER = "com.facebook.shimmer:shimmer:${Versions.SHIMMER}"

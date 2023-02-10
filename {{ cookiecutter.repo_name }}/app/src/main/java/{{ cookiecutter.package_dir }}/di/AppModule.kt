@@ -1,19 +1,15 @@
 package {{ cookiecutter.package_name }}.di
 
-{% if cookiecutter.include_room_db == 'y' %}
-import android.content.Context
+{% if cookiecutter.include_room_db == 'y' %}import android.content.Context
 import {{ cookiecutter.package_name }}.data.local.db.AppDatabase
-{% endif -%}
-import dagger.Module
+{% endif -%}import dagger.Module
 import dagger.hilt.components.SingletonComponent
 {%- if cookiecutter.include_room_db == 'y' %}
-import dagger.Provides
-{% endif %}
+import dagger.Provides{% endif %}
 import dagger.hilt.InstallIn
 {%- if cookiecutter.include_room_db == 'y' %}
 import dagger.hilt.android.qualifiers.ApplicationContext
-import javax.inject.Singleton
-{% endif %}
+import javax.inject.Singleton{% endif %}
 
 /**
  * Defines all the classes that need to be provided in the scope of the app.
@@ -27,6 +23,5 @@ object AppModule {% if cookiecutter.include_room_db == 'y' %}{
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
         AppDatabase.buildDatabase(context)
-
 }
 {% endif %}

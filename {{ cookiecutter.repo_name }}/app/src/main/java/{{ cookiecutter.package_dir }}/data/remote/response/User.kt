@@ -31,7 +31,7 @@ data class User(
         override fun toString(): String = "$title $first $last"
     }
 
-    data class Location (
+    data class Location(
         @SerializedName("street")
         val street: Street = Street(),
 
@@ -58,7 +58,7 @@ data class User(
         }
     }
 
-    data class Coordinates (
+    data class Coordinates(
         @SerializedName("latitude")
         val latitude: String = "",
 
