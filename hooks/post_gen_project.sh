@@ -21,10 +21,8 @@ setup_static_code_analysis() {
 remove_unwanted_files() {
     # Remove Room DB files
     if [[ "{{ cookiecutter.include_room_db}}" = 'n' ]]; then
-        rm -d -R "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/db/converter"
-        rm -d -R "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/db/dao"
-        rm "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/db/AppDatabase.kt"
-        rm "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/entity/DummyEntity.kt"
+        rm -rf "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/"
+        rm -rf "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/"
         echo "Removed Room DB files"
     fi
 }
