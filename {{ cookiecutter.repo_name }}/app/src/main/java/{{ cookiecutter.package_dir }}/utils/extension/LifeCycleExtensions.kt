@@ -2,7 +2,6 @@ package {{ cookiecutter.package_name }}.utils.extension
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import {{ cookiecutter.package_name }}.utils.result.Event
 import {{ cookiecutter.package_name }}.utils.result.EventObserver
 
