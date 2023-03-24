@@ -21,7 +21,7 @@ import {{ cookiecutter.package_name }}.data.remote.ApiService
  *         }
  * ```
  */
-interface ApiResult<T : Any>
+sealed interface ApiResult<T : Any>
 
 /**
  * Denotes API success

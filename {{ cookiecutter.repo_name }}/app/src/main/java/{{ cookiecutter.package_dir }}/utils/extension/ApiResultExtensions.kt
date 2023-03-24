@@ -6,9 +6,9 @@ import {{ cookiecutter.package_name }}.data.remote.apiresult.ApiResult
 import {{ cookiecutter.package_name }}.data.remote.apiresult.ApiSuccess
 
 /**
- * Execute [executable] if the [ApiResult] is of type [ApiResult.ApiSuccess]
+ * Execute [executable] if the [ApiResult] is of type [ApiSuccess]
  *
- * @param executable    Block to execute on [ApiResult.ApiSuccess]
+ * @param executable    Block to execute on [ApiSuccess]
  *
  * @return [ApiResult] instance
  */
@@ -21,9 +21,9 @@ suspend fun <T : Any> ApiResult<T>.onSuccess(
 }
 
 /**
- * Execute [executable] if the [ApiResult] is of type [ApiResult.ApiError]
+ * Execute [executable] if the [ApiResult] is of type [ApiError]
  *
- * @param executable    Block to execute on [ApiResult.ApiError]
+ * @param executable    Block to execute on [ApiError]
  *
  * @return [ApiResult] instance
  */
@@ -36,9 +36,9 @@ suspend fun <T : Any> ApiResult<T>.onError(
 }
 
 /**
- * Execute [executable] if the [ApiResult] is of type [ApiResult.ApiException]
+ * Execute [executable] if the [ApiResult] is of type [ApiException]
  *
- * @param executable    Block to execute on [ApiResult.ApiException]
+ * @param executable    Block to execute on [ApiException]
  *
  * @return [ApiResult] instance
  */
@@ -48,4 +48,21 @@ suspend fun <T : Any> ApiResult<T>.onException(
     if (this is ApiException<T>) {
         executable(exception)
     }
+}
+
+/**
+ * Returns [ApiResult] containing result of [transform] applied to [ApiSuccess].
+ *
+ * Use this extension when you want to transform a value to another value on [ApiSuccess].
+ *
+ * @param transform     Apply transformation to [ApiSuccess]
+ *
+ * @return [ApiResult] instance
+ */
+suspend fun <T : Any, R : Any> ApiResult<T>.mapOnSuccess(
+    transform: suspend (T) -> R
+): ApiResult<R> = when (this) {
+    is ApiError -> ApiError(code, message)
+    is ApiException -> ApiException(exception)
+    is ApiSuccess -> ApiSuccess(transform(data))
 }
