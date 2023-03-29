@@ -17,11 +17,10 @@ import javax.inject.Singleton{% endif %}
  */
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {% if cookiecutter.include_room_db == 'y' %}{
+object AppModule{% if cookiecutter.include_room_db == 'y' %} {
 
     @Singleton
     @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
         AppDatabase.buildDatabase(context)
-}
-{% endif %}
+}{% endif %}
