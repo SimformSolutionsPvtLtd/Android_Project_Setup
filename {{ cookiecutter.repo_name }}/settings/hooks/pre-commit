@@ -3,7 +3,7 @@
 echo "Running static analysis and code formatting..."
 
 # Format code using KtLint, then run Detekt and KtLint static analysis
-./gradlew detek ktlintFormat ktlint spotlessApply --daemon
+./gradlew detekt ktlintFormat ktlint spotlessApply --daemon
 
 status=$?
 

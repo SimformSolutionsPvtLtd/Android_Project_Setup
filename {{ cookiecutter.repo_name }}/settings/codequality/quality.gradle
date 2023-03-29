@@ -12,26 +12,34 @@ apply plugin: 'checkstyle'
 apply plugin: 'pmd'
 apply plugin: 'com.diffplug.spotless'
 apply plugin: 'io.gitlab.arturbosch.detekt'
+
 configurations {
     ktlint
     detektPlugins
 }
+
 dependencies {
     checkstyle 'com.puppycrawl.tools:checkstyle:8.39'
     ktlint "com.pinterest:ktlint:0.47.0"
-    detektPlugins 'io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0'
+    detekt 'io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0'
+    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.22.0'
 }
+
 def qualityConfigDir = "$project.rootDir/settings/codequality"
 def reportsDir = "$project.rootDir/settings/reports"
 def sourceDir = "$project.rootDir"
+
 preBuild.dependsOn('spotlessApply','detekt')
 assemble.dependsOn('lint')
+
 check.dependsOn 'checkstyle', 'detekt', 'ktlint', 'ktlintFormat', 'pmd', 'spotlessApply', 'spotlessCheck'
+
 gradle.taskGraph.afterTask { Task task, TaskState state ->
     println "Task Name => " + task.name
 }
+
 //CheckStyle
-task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code style checks') {
+tasks.register('checkstyle', Checkstyle) {
     showViolations = true
     configFile file("$qualityConfigDir/checkstyle/checkstyle.xml")
     configProperties = ["suppressionFile": project(':').file("$qualityConfigDir/checkstyle/suppressions.xml")]
@@ -45,14 +53,15 @@ task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code
     exclude '**/R.java'
     exclude '**/BuildConfig.java'
     reports {
-        xml.enabled = true
-        html.enabled = true
-        xml.setDestination(project.file("$reportsDir/checkstyle/checkstyle.xml"))
-        html.setDestination(project.file("$reportsDir/checkstyle/checkstyle.html"))
+        xml.getRequired().set(true)
+        html.getRequired().set(true)
+        xml.getOutputLocation().set(project.file("$reportsDir/checkstyle/checkstyle.xml"))
+        html.getOutputLocation().set(project.file("$reportsDir/checkstyle/checkstyle.html"))
     }
     //classpath = files()
     classpath = files("$sourceDir")
 }
+
 //Lint
 android {
     lintOptions {
@@ -89,7 +98,7 @@ android {
 }
 
 //PMD
-task pmd(type: Pmd, group: 'Verification', description: 'Inspect sourcecode for bugs') {
+tasks.register('pmd', Pmd) {
     ruleSetFiles = files("$qualityConfigDir/pmd/ruleset.xml")
     ignoreFailures = false
     ruleSets = []
@@ -104,8 +113,9 @@ task pmd(type: Pmd, group: 'Verification', description: 'Inspect sourcecode for 
         html.setDestination(project.file("$reportsDir/pmd/pmd.html"))
     }
 }
+
 //Kt Lint
-task ktlint(type: JavaExec, group: "verification") {
+tasks.register('ktlint', JavaExec) {
     description = "Check Kotlin code style."
     classpath = configurations.ktlint
     main = "com.pinterest.ktlint.Main"
@@ -113,8 +123,10 @@ task ktlint(type: JavaExec, group: "verification") {
             "--reporter=json,output=${reportsDir}/ktlint/ktlint.json",
             "--reporter=plain,output=${reportsDir}/ktlint/ktlint.txt", "src/**/*.kt"
 }
+
 check.dependsOn ktlint
-task ktlintFormat(type: JavaExec, group: "formatting") {
+
+tasks.register('ktlintFormat', JavaExec) {
     description = "Fix Kotlin code style deviations."
     classpath = configurations.ktlint
     main = "com.pinterest.ktlint.Main"
@@ -122,14 +134,18 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
             "--reporter=json,output=${reportsDir}/ktlint/format/ktlint.json",
             "--reporter=plain,output=${reportsDir}/ktlint/format/ktlint.txt", "src/**/*.kt"
 }
+
 check.dependsOn ktlintFormat
+
 //detekt
 detekt {
     config = files("$qualityConfigDir/detekt/detekt.yml")
     parallel = true
     basePath = projectDir
 }
+
 check.dependsOn detekt
+
 //spotless
 spotless {
     kotlin {
