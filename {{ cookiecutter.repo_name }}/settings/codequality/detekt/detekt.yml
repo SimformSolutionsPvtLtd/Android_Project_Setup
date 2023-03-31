@@ -65,13 +65,9 @@ complexity:
     threshold: 10
     includeStaticDeclarations: false
     includePrivateDeclarations: false
-  ComplexMethod:
+  CyclomaticComplexMethod:
     active: true
-    threshold: 15
-    ignoreSingleWhenExpression: false
-    ignoreSimpleWhenEntries: false
-    ignoreNestingFunctions: false
-    nestingFunctions: [run, let, apply, with, also, use, forEach, isNotNull, ifNull]
+    ignoreSingleWhenExpression: true
   LabeledExpression:
     active: false
     ignoredLabels: []
@@ -242,7 +238,6 @@ formatting:
     active: false
     autoCorrect: true
     indentSize: 4
-    continuationIndentSize: 4
   MaximumLineLength:
     active: true
     maxLineLength: 200
@@ -293,7 +288,6 @@ formatting:
   ParameterListWrapping:
     active: true
     autoCorrect: true
-    indentSize: 4
   SpacingAroundColon:
     active: true
     autoCorrect: true
@@ -421,8 +415,6 @@ potential-bugs:
   active: true
   Deprecation:
     active: false
-  DuplicateCaseInWhenExpression:
-    active: true
   EqualsAlwaysReturnsTrueOrFalse:
     active: true
   EqualsWithHashCodeExist:
@@ -442,14 +434,10 @@ potential-bugs:
   LateinitUsage:
     active: false
     excludes: ['**/test/**', '**/androidTest/**', '**/*.Test.kt', '**/*.Spec.kt', '**/*.Spek.kt']
-    excludeAnnotatedProperties: []
+    ignoreAnnotated: []
     ignoreOnClassesPattern: ''
   MapGetWithNotNullAssertionOperator:
     active: false
-  MissingWhenCase:
-    active: true
-  RedundantElseInWhen:
-    active: true
   UnconditionalJumpStatementInLoop:
     active: false
   UnnecessaryNotNullOperator:
@@ -469,13 +457,20 @@ potential-bugs:
 
 style:
   active: true
+  AlsoCouldBeApply:
+    active: true
+  CanBeNonNullable:
+    active: true
   CollapsibleIfStatements:
     active: false
   DataClassContainsFunctions:
     active: false
-    conversionFunctionPrefix: 'to'
+    conversionFunctionPrefix: [ 'to' ]
   DataClassShouldBeImmutable:
     active: false
+  DestructuringDeclarationWithTooManyEntries:
+    active: true
+    maxDestructuringEntries: 3
   EqualsNullCall:
     active: true
   EqualsOnSignatureLine:
@@ -498,9 +493,6 @@ style:
   ForbiddenMethodCall:
     active: false
     methods: []
-  ForbiddenPublicDataClass:
-    active: false
-    ignorePackages: ['*.internal', '*.internal.*']
   ForbiddenVoid:
     active: false
     ignoreOverridden: false
@@ -508,10 +500,8 @@ style:
   FunctionOnlyReturningConstant:
     active: true
     ignoreOverridableFunction: true
-    excludedFunctions: 'describeContents'
-    excludeAnnotatedFunction: ['dagger.Provides']
-  LibraryCodeMustSpecifyReturnType:
-    active: true
+    excludedFunctions: [ 'describeContents' ]
+    ignoreAnnotated: ['dagger.Provides']
   LoopWithTooManyJumpStatements:
     active: true
     maxJumpCount: 1
@@ -563,7 +553,7 @@ style:
   ReturnCount:
     active: true
     max: 5
-    excludedFunctions: 'equals'
+    excludedFunctions: [ 'equals' ]
     excludeLabeled: false
     excludeReturnFromLambda: true
     excludeGuardClauses: false
@@ -580,10 +570,10 @@ style:
     active: false
   UnderscoresInNumericLiterals:
     active: false
-    acceptableDecimalLength: 5
+    acceptableLength: 5
   UnnecessaryAbstractClass:
     active: false
-    excludeAnnotatedClasses: ['dagger.Module']
+    ignoreAnnotated: ['dagger.Module']
   UnnecessaryAnnotationUseSiteTarget:
     active: false
   UnnecessaryApply:
@@ -591,7 +581,7 @@ style:
   UnnecessaryInheritance:
     active: true
   UnnecessaryLet:
-    active: false
+    active: true
   UnnecessaryParentheses:
     active: false
   UntilInsteadOfRangeTo:
@@ -609,7 +599,7 @@ style:
     active: false
   UseDataClass:
     active: false
-    excludeAnnotatedClasses: []
+    ignoreAnnotated: []
     allowVars: false
   UseIfInsteadOfWhen:
     active: false
