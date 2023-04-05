@@ -3,6 +3,7 @@ package {{ cookiecutter.package_name }}
 import android.app.Application
 import android.net.ConnectivityManager
 import android.net.Network
+import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.util.Log
 import com.microsoft.appcenter.AppCenter
@@ -15,6 +16,8 @@ import timber.log.Timber
 
 @HiltAndroidApp
 class {{ cookiecutter.app_name | replace(' ', '') }}App : Application() {
+
+    private val validNetworks: MutableList<Network> = mutableListOf()
 
     override fun onCreate() {
         super.onCreate()
@@ -48,22 +51,37 @@ class {{ cookiecutter.app_name | replace(' ', '') }}App : Application() {
     }
 
     /**
-    * Observe network state.
-    */
+     * Observe network state.
+     */
     private fun observeNetwork() {
-        val cm: ConnectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
-        val networkRequest = NetworkRequest.Builder().build()
-
-        cm.registerNetworkCallback(
+        val connectivityManager: ConnectivityManager =
+            getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkRequest = NetworkRequest.Builder()
+            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+            .build()
+        connectivityManager.registerNetworkCallback(
             networkRequest,
             object : ConnectivityManager.NetworkCallback() {
                 override fun onAvailable(network: Network) {
-                    NetworkUtil.isNetworkConnected = true
+                    val networkCapabilities = connectivityManager.getNetworkCapabilities(network)
+                    val hasInternet =
+                        networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                            ?: false
+                    if (hasInternet) {
+                        validNetworks.add(network)
+                        checkValidNetworks()
+                    }
                 }
 
                 override fun onLost(network: Network) {
-                    NetworkUtil.isNetworkConnected = false
+                    validNetworks.remove(network)
+                    checkValidNetworks()
                 }
-            })
+            }
+        )
+    }
+
+    private fun checkValidNetworks() {
+        NetworkUtil.isNetworkConnected = validNetworks.isNotEmpty()
     }
 }

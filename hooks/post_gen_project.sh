@@ -43,6 +43,11 @@ check_for_launch_flag() {
     fi
 }
 
+apply_copyright() {
+    echo "Running spotless to add copyright"
+    ./gradlew spotlessApply
+}
+
 launch_studio() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         /Applications/Android\ Studio.app/Contents/MacOS/studio .
@@ -56,4 +61,5 @@ initialize_git
 update_project_permissions
 setup_static_code_analysis
 remove_unwanted_files
+apply_copyright
 attempt_to_launch_studio
