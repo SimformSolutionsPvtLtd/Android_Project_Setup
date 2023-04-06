@@ -1,14 +1,15 @@
 #!/bin/bash
 
 initialize_git() {
+    echo "=> Initializing git"
     git init
     git add -A
 }
 
-update_project_permissions() {
-    cd ..
-    chmod -R 777 "{{ cookiecutter.repo_name }}"
-    cd "{{ cookiecutter.repo_name }}"
+load_static_code_analysis() {
+    echo "=> Load static code analysis"
+    git submodule add https://github.com/SimformSolutionsPvtLtd/static_analysis_android.git settings
+    git submodule update --init
 }
 
 setup_static_code_analysis() {
@@ -18,7 +19,15 @@ setup_static_code_analysis() {
     cd ..
 }
 
+update_project_permissions() {
+    echo "=> Updating project permissions"
+    cd ..
+    chmod -R 777 "{{ cookiecutter.repo_name }}"
+    cd "{{ cookiecutter.repo_name }}"
+}
+
 remove_unwanted_files() {
+    echo "=> Removing unwanted files"
     # Remove Room DB files
     if [[ "{{ cookiecutter.include_room_db}}" = 'n' ]]; then
         rm -rf "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/"
@@ -44,7 +53,7 @@ check_for_launch_flag() {
 }
 
 apply_copyright() {
-    echo "Running spotless to add copyright"
+    echo "=> Running spotless to add copyright"
     ./gradlew spotlessApply
 }
 
@@ -58,8 +67,9 @@ launch_studio() {
 }
 
 initialize_git
-update_project_permissions
+load_static_code_analysis
 setup_static_code_analysis
+update_project_permissions
 remove_unwanted_files
 apply_copyright
 attempt_to_launch_studio
