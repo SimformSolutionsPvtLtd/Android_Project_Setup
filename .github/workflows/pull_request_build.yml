@@ -1,0 +1,61 @@
+name: Pull Request Build
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+# Cancel currently running workflow for same PR
+# https://stackoverflow.com/a/72408109
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v3 
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install cookiecutter
+      run: python3 -m pip install --user cookiecutter
+
+    - name: set up JDK 11
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+    - name: Run cookiecutter
+      run: |
+        cd ..
+        cookiecutter Android_Project_Setup \
+          --no-input \
+          app_name="Simform" \
+          repo_name="Simform" \
+          package_name="com.simform.app" \
+          appcenter_key="" \
+          package_dir="com/simform/app" \
+          copyright_year_name="2023 Simform" \
+          include_testing="n" \
+          include_room_db="y" \
+          launch_studio="false"
+    
+    - name: Run settings setup.sh 
+      run: |
+        cd ../Simform/settings
+        chmod +x setup.sh
+        ./setup.sh
+
+    - name: Build Project
+      run: |
+        cd ../Simform
+        chmod +x gradlew
+        ./gradlew assembleDevDebug
+
