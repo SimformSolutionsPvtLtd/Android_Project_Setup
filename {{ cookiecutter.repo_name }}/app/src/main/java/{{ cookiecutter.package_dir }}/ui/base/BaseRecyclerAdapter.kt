@@ -33,8 +33,7 @@ abstract class BaseRecyclerAdapter<T> :
         fun bind(data: T) {
             viewDataBinding.setVariable(BR.data, data)
             viewDataBinding.setVariable(BR.clickHandler, this)
-            setDataForListItem(viewDataBinding, data)
-            setDataForListItemWithPosition(viewDataBinding, data, absoluteAdapterPosition)
+            setDataForListItem(viewDataBinding, data, absoluteAdapterPosition)
             viewDataBinding.executePendingBindings()
         }
 
@@ -146,21 +145,13 @@ abstract class BaseRecyclerAdapter<T> :
         firstItem == secondItem
 
     /**
-     * Set the list item with [data]
-     *
-     * @param binding   The [ViewDataBinding] instance
-     * @param data      The data to set
-     */
-    protected open fun setDataForListItem(binding: ViewDataBinding, data: T) { }
-
-    /**
      * Set the list item with [data] at [position]
      *
      * @param binding   The [ViewDataBinding] instance
      * @param data      The data to set
      * @param position  The position at which [data] should be added
      */
-    protected open fun setDataForListItemWithPosition(
+    protected open fun setDataForListItem(
         binding: ViewDataBinding,
         data: T,
         position: Int
