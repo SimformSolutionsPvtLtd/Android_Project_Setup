@@ -269,7 +269,7 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # Settings
-/settings/reports
+settings/
 
 !/app/src/production
 
