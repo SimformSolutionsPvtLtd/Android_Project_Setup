@@ -13,7 +13,3 @@ fun Project.defaultFileTree() = fileTree(mapOf("dir" to "libs", "include" to lis
  */
 fun Project.rootPath(appendPath: String = ""): String = rootProject.rootDir.path + appendPath
 
-/**
- * Adds jitpack maven repository
- */
-fun RepositoryHandler.jitPack() = maven { url = URI(Urls.JITPACK) }

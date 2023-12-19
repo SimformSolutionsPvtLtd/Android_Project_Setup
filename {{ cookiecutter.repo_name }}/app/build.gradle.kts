@@ -1,8 +1,8 @@
 plugins {
-    id(Plugins.ANDROID_APPLICATION)
-    kotlin(Plugins.Kotlin.ANDROID)
-    kotlin(Plugins.Kotlin.KAPT)
-    id(Plugins.HILT)
+    alias (libs.plugins.android.application)
+    alias (libs.plugins.kotlin.android)
+    alias (libs.plugins.kotlin.kapt)
+    alias (libs.plugins.hilt.plugin)
 }
 
 apply {
@@ -10,8 +10,8 @@ apply {
 }
 
 android {
-    compileSdk = Versions.COMPILE_SDK
-    buildToolsVersion = Versions.BUILD_TOOLS
+    namespace = App.ID
+    compileSdk = libs.versions.compile.sdk.version.get().toInt()
 
     signingConfigs {
         create("release") {
@@ -24,10 +24,10 @@ android {
 
     defaultConfig {
         applicationId = App.ID
-        minSdk = Versions.MIN_SDK
-        targetSdk = Versions.TARGET_SDK
-        versionCode = App.Version.CODE
-        versionName = App.Version.NAME
+        minSdk = libs.versions.min.sdk.version.get().toInt()
+        targetSdk = libs.versions.compile.sdk.version.get().toInt()
+        versionCode = libs.versions.version.code.get().toInt()
+        versionName = libs.versions.version.name.get()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         {%- if cookiecutter.include_room_db == 'y' %}
 
@@ -56,7 +56,7 @@ android {
     }
 
 
-    flavorDimensions(App.Dimension.DEFAULT)
+    flavorDimensions += App.Dimension.DEFAULT
 
     productFlavors {
         create(App.Flavor.DEV) {
@@ -74,15 +74,16 @@ android {
 
     buildFeatures {
         dataBinding = true
+        buildConfig = true
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 }
 
@@ -90,83 +91,89 @@ dependencies {
     implementation(defaultFileTree())
 
     // Core
-    implementation(Libs.CORE_KTX)
+    implementation(libs.core.ktx)
 
     // UI
-    implementation(Libs.APPCOMPAT)
-    implementation(Libs.CONSTRAINT_LAYOUT)
-    implementation(Libs.RECYCLERVIEW)
+    implementation(libs.appcompat)
+    implementation(libs.constraintlayout)
+    implementation(libs.recyclerview)
 
     // Jetpack
-    implementation(Libs.ACTIVITY_KTX)
-    implementation(Libs.FRAGMENT_KTX)
+    implementation(libs.activity.ktx)
+    implementation(libs.fragment.ktx)
+
     // ViewModel
-    implementation(Libs.LIFECYCLE_VIEWMODEL_KTX)
+    implementation(libs.lifecycle.viewmodel.ktx)
+
     // LiveData
-    implementation(Libs.LIFECYCLE_LIVEDATA_KTX)
+    implementation(libs.lifecycle.livedata.ktx)
+
     // Navigation
-    implementation(Libs.NAVIGATION_UI_KTX)
-    implementation(Libs.NAVIGATION_FRAGMENT_KTX)
+    implementation(libs.navigation.ui.ktx)
+    implementation(libs.navigation.fragment.ktx)
+
     {%- if cookiecutter.include_room_db == 'y' %}
     // Room
-    implementation(Libs.ROOM_RUNTIME)
-    implementation(Libs.ROOM_KTX)
-    kapt(Libs.ROOM_COMPILER)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    kapt(libs.room.compiler)
     {% endif %}
+
     // Hilt
-    implementation(Libs.HILT)
-    kapt(Libs.HILT_DAGGER_COMPILER)
-    kapt(Libs.HILT_COMPILER)
+    implementation(libs.hilt)
+    kapt(libs.hilt.dagger.compiler)
+    kapt(libs.hilt.compiler)
 
     // Material
-    implementation(Libs.MATERIAL)
+    implementation(libs.material)
 
     // Coroutines
-    implementation(Libs.COROUTINES_CORE)
-    implementation(Libs.COROUTINES_ANDROID)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
 
     // Retrofit
-    implementation(Libs.RETROFIT)
-    implementation(Libs.RETROFIT_GSON)
-    implementation(Libs.OKHTTP3)
-    implementation(Libs.OKHTTP3_LOGGING_INTERCEPTOR)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp3)
+    implementation(libs.okhttp3.logging.interceptor)
 
     // Gson
-    implementation(Libs.GSON)
+    implementation(libs.gson)
 
     // AppCenter
-    implementation(Libs.APPCENTER_ANALYTICS)
-    implementation(Libs.APPCENTER_CRASHES)
+    implementation(libs.appcenter.analytics)
+    implementation(libs.appcenter.crashes)
 
     // Timber
-    implementation(Libs.TIMBER)
+    implementation(libs.timber)
 
     // Kotlin Reflect
-    implementation(kotlin(Libs.REFLECT))
+    implementation(libs.kotlin.reflect)
 
     // Alerter
-    implementation(Libs.ALERTER)
+    implementation(libs.alerter)
 
     // Shimmer
-    implementation(Libs.SHIMMER)
-    
+    implementation(libs.shimmer)
+
     // Glide
-    implementation(Libs.GLIDE)
+    implementation(libs.glide)
+
     {%- if cookiecutter.include_testing == 'y' %}
     // Unit testing
-    testImplementation(Libs.JUNIT)
-    testImplementation(Libs.JUNIT_EXT)
-    testImplementation(Libs.ARCH_CORE_TESTING)
-    testImplementation(Libs.COROUTINES_TEST)
-    testImplementation(Libs.HAMCREST)
-    testImplementation(Libs.MOCKITO_CORE)
-    testImplementation(Libs.MOCKITO_KOTLIN)
+    testImplementation(libs.junit)
+    testImplementation(libs.junit.ext)
+    testImplementation(libs.arch.core.testing)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.hamcrest)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
 
     // UI testing
-    androidTestImplementation(Libs.TEST_RUNNER)
-    androidTestImplementation(Libs.JUNIT_EXT)
-    androidTestImplementation(Libs.TEST_RULES)
-    androidTestImplementation(Libs.ESPRESSO_CORE)
-    androidTestImplementation(Libs.ESPRESSO_CONTRIB)
+    androidTestImplementation(libs.test.runner)
+    androidTestImplementation(libs.junit.ext)
+    androidTestImplementation(libs.test.rules)
+    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.espresso.contrib)
     {% endif %}
 }

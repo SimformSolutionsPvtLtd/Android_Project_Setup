@@ -26,10 +26,10 @@ jobs:
     - name: Install cookiecutter
       run: python3 -m pip install --user cookiecutter
 
-    - name: set up JDK 11
+    - name: set up JDK 17
       uses: actions/setup-java@v3
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'temurin'
 
     - name: Run cookiecutter
