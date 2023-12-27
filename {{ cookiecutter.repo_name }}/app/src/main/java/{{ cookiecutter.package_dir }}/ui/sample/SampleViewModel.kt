@@ -43,10 +43,6 @@ class SampleViewModel @Inject constructor(
 
     private var currentPage = 0
 
-    init {
-        loadMoreUsers()
-    }
-
     fun loadMoreUsers() {
         _isLoadingPage.value = true
         currentPage += 1

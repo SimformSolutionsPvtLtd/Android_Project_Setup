@@ -1,0 +1,400 @@
+{
+  "results": [
+    {
+      "name": {
+        "title": "Miss",
+        "first": "Laura",
+        "last": "Woods"
+      },
+      "location": {
+        "street": {
+          "number": 2479,
+          "name": "Henry Street"
+        },
+        "city": "Blessington",
+        "state": "Wexford",
+        "country": "Ireland",
+        "postcode": 78276,
+        "coordinates": {
+          "latitude": "2.0565",
+          "longitude": "95.2422"
+        },
+        "timezone": {
+          "offset": "+1:00",
+          "description": "Brussels, Copenhagen, Madrid, Paris"
+        }
+      },
+      "login": {
+        "uuid": "9f07341f-c7e6-45b7-bab0-af6de5a4582d",
+        "username": "angryostrich988",
+        "password": "racers",
+        "salt": "B5ywSDUM",
+        "md5": "2eefb6307df2a5fb1f91c6b968dc905b",
+        "sha1": "33cbf1e97a31e14c87fb18c481d1f6d958c76cbd",
+        "sha256": "83e0c89668c8b6131df0c70fc4bb9abb8831e0ff97a0a29cdfa3949dd5afd491"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/88.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/88.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/88.jpg"
+      }
+    },
+    {
+      "name": {
+        "title": "Mr",
+        "first": "Marten",
+        "last": "Faber"
+      },
+      "location": {
+        "street": {
+          "number": 6167,
+          "name": "Grüner Weg"
+        },
+        "city": "Falkenberg/Elster",
+        "state": "Thüringen",
+        "country": "Germany",
+        "postcode": 99553,
+        "coordinates": {
+          "latitude": "89.4367",
+          "longitude": "135.6354"
+        },
+        "timezone": {
+          "offset": "+5:45",
+          "description": "Kathmandu"
+        }
+      },
+      "login": {
+        "uuid": "1cd1e622-12bb-4b35-a2c9-63ff7bda6c73",
+        "username": "yellowfish737",
+        "password": "krusty",
+        "salt": "CQZQxXDl",
+        "md5": "c875e08220708016989470d12ba1175f",
+        "sha1": "48f118f603294a09a5cd30b93bca9b08d5abcae5",
+        "sha256": "2daf436e8b7cd276eaedfd06ced8a8e1938fae2015fb775ac20490d9a92ec3a1"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/1.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/1.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/1.jpg"
+      }
+    },
+    {
+      "name": {
+        "title": "Ms",
+        "first": "Kirstin",
+        "last": "Abraham"
+      },
+      "location": {
+        "street": {
+          "number": 2100,
+          "name": "Feldstraße"
+        },
+        "city": "Schwedt/Oder",
+        "state": "Niedersachsen",
+        "country": "Germany",
+        "postcode": 47489,
+        "coordinates": {
+          "latitude": "3.9825",
+          "longitude": "176.6213"
+        },
+        "timezone": {
+          "offset": "-7:00",
+          "description": "Mountain Time (US & Canada)"
+        }
+      },
+      "login": {
+        "uuid": "4b400301-d696-4618-862e-8a673f80e334",
+        "username": "orangeostrich848",
+        "password": "bigmac",
+        "salt": "DLYnpdL2",
+        "md5": "1cb287dafdc0a0276e7cffb95ff6806b",
+        "sha1": "3c56c5298567397386ee1221c87a433e3847872d",
+        "sha256": "ffa8d62292c4de3f5c52a127d7a46b661b8ac64f53b12f73059e626ee8d54e69"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/72.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/72.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/72.jpg"
+      }
+    },
+    {
+      "name": {
+        "title": "Mrs",
+        "first": "Erin",
+        "last": "Clarke"
+      },
+      "location": {
+        "street": {
+          "number": 5249,
+          "name": "George Street"
+        },
+        "city": "Roscrea",
+        "state": "Monaghan",
+        "country": "Ireland",
+        "postcode": 42422,
+        "coordinates": {
+          "latitude": "52.7455",
+          "longitude": "6.1478"
+        },
+        "timezone": {
+          "offset": "+5:45",
+          "description": "Kathmandu"
+        }
+      },
+      "login": {
+        "uuid": "679d3319-d28a-4d6f-baf8-bde50a8a2edd",
+        "username": "bigsnake457",
+        "password": "another",
+        "salt": "mbWSPHoD",
+        "md5": "dceadf5e3cfd7368c69f235f856c5b29",
+        "sha1": "fdc3da6789c758168be76e004645995e316aa0e0",
+        "sha256": "a3a6cad573cecd0cae0befff38bf45d6416dcd36396288c075c6f43ad9bfe779"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/58.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/58.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/58.jpg"
+      }
+    },
+    {
+      "name": {
+        "title": "Mr",
+        "first": "Hólger",
+        "last": "Nascimento"
+      },
+      "location": {
+        "street": {
+          "number": 7949,
+          "name": "Rua Dois"
+        },
+        "city": "Santana de Parnaíba",
+        "state": "Bahia",
+        "country": "Brazil",
+        "postcode": 79502,
+        "coordinates": {
+          "latitude": "-18.3929",
+          "longitude": "-5.5054"
+        },
+        "timezone": {
+          "offset": "+4:00",
+          "description": "Abu Dhabi, Muscat, Baku, Tbilisi"
+        }
+      },
+      "login": {
+        "uuid": "b7e527c8-3ca5-430c-ba83-711d6ad98773",
+        "username": "goldencat230",
+        "password": "nimbus",
+        "salt": "EDI8qs5x",
+        "md5": "a1d391f2dc98964f4d00b61b1cdb23b4",
+        "sha1": "e48b2a53c371981ecf115b2304abed922b5a590a",
+        "sha256": "9ac7314d2142de9d385bdf1f285f9d718a0c2de004edaafefa058082fc99fbaa"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/64.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/ 2023-12-20 13:23:08.133  9150-9186  okhttp.OkHttpClient     com.simformsolutions.app             I  men/64.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/64.jpg"
+      }
+    },
+    {
+      "name": {
+        "title": "Mrs",
+        "first": "Ava",
+        "last": "Black"
+      },
+      "location": {
+        "street": {
+          "number": 8769,
+          "name": "Station Road"
+        },
+        "city": "Cashel",
+        "state": "Leitrim",
+        "country": "Ireland",
+        "postcode": 67589,
+        "coordinates": {
+          "latitude": "-1.8238",
+          "longitude": "-38.6202"
+        },
+        "timezone": {
+          "offset": "+8:00",
+          "description": "Beijing, Perth, Singapore, Hong Kong"
+        }
+      },
+      "login": {
+        "uuid": "8b8ce16b-b3f5-4cf5-a007-a9c4c2c778f4",
+        "username": "tinyduck697",
+        "password": "milo",
+        "salt": "dRpEqii8",
+        "md5": "f7fe8028fa83d0a95d6116c8b6aab47e",
+        "sha1": "ce31e5b1844c065dff3926a536d9f0e9c2114955",
+        "sha256": "7a6ae0093aa60294285516d7016edc0e8216edac992aa3d1bd61d2068b89316b"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/37.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/37.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/37.jpg"
+      }
+    },
+    {
+      "name": {
+        "title": "Miss",
+        "first": "Kvitoslava",
+        "last": "Shunevich"
+      },
+      "location": {
+        "street": {
+          "number": 2175,
+          "name": "Mikoli Zerova"
+        },
+        "city": "Dolinska",
+        "state": "Kirovogradska",
+        "country": "Ukraine",
+        "postcode": 79121,
+        "coordinates": {
+          "latitude": "-35.4549",
+          "longitude": "149.0069"
+        },
+        "timezone": {
+          "offset": "-9:00",
+          "description": "Alaska"
+        }
+      },
+      "login": {
+        "uuid": "6a52282a-46d6-4a71-ac69-12ea0dfb3f24",
+        "username": "bluerabbit915",
+        "password": "gore",
+        "salt": "uS6HAnn5",
+        "md5": "16934862f24e2a5385bccbf6785d1be6",
+        "sha1": "df9b14da57d96c086d69b5a95099026f1ce9bd1a",
+        "sha256": "ab11ce9c5f7e4d72a1ca33cf60edd57c903238d8062929a441abc32b25cd3f29"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/8.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/8.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/8.jpg"
+      }
+    },
+    {
+      "name": {
+        "title": "Monsieur",
+        "first": "Jorge",
+        "last": "Deschamps"
+      },
+      "location": {
+        "street": {
+          "number": 4913,
+          "name": "Place de L'Église"
+        },
+        "city": "Schupfart",
+        "state": "Fribourg",
+        "country": "Switzerland",
+        "postcode": 5397,
+        "coordinates": {
+          "latitude": "73.3382",
+          "longitude": "-15.8943"
+        },
+        "timezone": {
+          "offset": "+2:00",
+          "description": "Kaliningrad, South Africa"
+        }
+      },
+      "login": {
+        "uuid": "8a23be8b-115d-4ec3-ba0b-47422f9d3afd",
+        "username": "ticklishleopard323",
+        "password": "tigers1",
+        "salt": "0OeH9rqV",
+        "md5": "2045a382ea65f9b36c67c5087db01de1",
+        "sha1": "09d31c37d68ad391749c17a225cb9f463ae812a1",
+        "sha256": "6dc1ead9461c648b83528eded6694870147c074eff2cfd11465069a42a388e31"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/91.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/91.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/91.jpg"
+      }
+    },
+    {
+      "name": {
+        "title": "Mrs",
+        "first": "Roswitha",
+        "last": "Straub"
+      },
+      "location": {
+        "street": {
+          "number": 7076,
+          "name": "Gartenstraße"
+        },
+        "city": "Bad Salzuflen",
+        "state": "Sachsen",
+        "country": "Germany",
+        "postcode": 22094,
+        "coordinates": {
+          "latitude": "-20.3448",
+          "longitude": "-114.4092"
+        },
+        "timezone": {
+          "offset": "-1:00",
+          "description": "Azores, Cape Verde Islands"
+        }
+      },
+      "login": {
+        "uuid": "dd2ae95d-c05b-4e83-9226-76ed6f023546",
+        "username": "happykoala706",
+        "password": "maxwell1",
+        "salt": "LkMvC0aj",
+        "md5": "f0f3827edc558b116118163bc0bbde74",
+        "sha1": "8f3e2e7cdebce6432d461130295a9359a6297f14",
+        "sha256": "b4204b2f29296b8921dc17924681555aed1e246db99362ffc721622afa711f14"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/28.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/28.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/28.jpg"
+      }
+    },
+    {
+      "name": {
+        "title": "Mrs",
+        "first": "Nicky",
+        "last": "Reid"
+      },
+      "location": {
+        "street": {
+          "number": 3676,
+          "name": "Church Street"
+        },
+        "city": "Newcastle upon Tyne",
+        "state": "Gloucestershire",
+        "country": "United Kingdom",
+        "postcode": "D0 6PZ",
+        "coordinates": {
+          "latitude": "48.2435",
+          "longitude": "-61.3271"
+        },
+        "timezone": {
+          "offset": "0:00",
+          "description": "Western Europe Time, London, Lisbon, Casablanca"
+        }
+      },
+      "login": {
+        "uuid": "be8633e6-3ce5-4b16-bba5-c241e2acfc12",
+        "username": "beautifulmouse763",
+        "password": "gamma",
+        "salt": "eVaoCmju",
+        "md5": "316661c5417a30439b8c4ec723639c0f",
+        "sha1": "3f3e5ca71e0075bbbf2628330614cde58e0bec1d",
+        "sha256": "33e4ecf6f3c0f00f0aa8d1dc9a503dee35c370e0c6c 2023-12-20 13:23:08.133  9150-9186  okhttp.OkHttpClient     com.simformsolutions.app             I  7a76d62eb8be7d79c3b11"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/78.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/78.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/78.jpg"
+      }
+    }
+  ],
+  "info": {
+    "seed": "abc",
+    "results": 10,
+    "page": 1,
+    "version": "1.4"
+  }
+}
