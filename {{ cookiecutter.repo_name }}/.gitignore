@@ -268,9 +268,6 @@ fabric.properties
 
 !/gradle/wrapper/gradle-wrapper.jar
 
-# Settings
-settings/
-
 !/app/src/production
 
 # End of https://www.toptal.com/developers/gitignore/api/android,androidstudio,kotlin,java,gradle,git
