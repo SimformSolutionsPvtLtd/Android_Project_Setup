@@ -34,6 +34,11 @@ remove_unwanted_files() {
         rm -rf "app/src/main/java/{{ cookiecutter.package_dir }}/data/local/"
         echo "Removed Room DB files"
     fi
+    # Remove Test files
+    if [[ "{{ cookiecutter.include_testing}}" = 'n' ]]; then
+        rm -rf "app/src/test/"
+        echo "Removed Test files"
+    fi
 }
 
 attempt_to_launch_studio() {

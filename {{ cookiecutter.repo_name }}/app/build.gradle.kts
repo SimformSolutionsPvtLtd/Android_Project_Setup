@@ -168,6 +168,7 @@ dependencies {
     testImplementation(libs.hamcrest)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mock.web.server)
 
     // UI testing
     androidTestImplementation(libs.test.runner)

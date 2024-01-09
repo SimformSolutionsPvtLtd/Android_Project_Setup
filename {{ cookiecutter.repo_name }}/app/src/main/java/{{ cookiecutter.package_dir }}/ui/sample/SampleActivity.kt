@@ -23,6 +23,7 @@ class SampleActivity : BaseAppCompatActivity<ActivitySampleBinding, SampleViewMo
         super.initialize()
         binding.rvUsers.adapter = userAdapter
         binding.rvUsers.addOnScrollListener(paginationListener)
+        viewModel.loadMoreUsers()
     }
 
     override fun setupViewModel() {

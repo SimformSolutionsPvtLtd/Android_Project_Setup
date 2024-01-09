@@ -37,6 +37,7 @@ mockito-core = "5.1.1"
 mockito-kotlin = "2.2.0"
 junit = "4.13.2"
 junit-ext = "1.1.5"
+mock-web-server = "4.10.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -82,6 +83,7 @@ mockito-kotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 junit-ext = { group = "androidx.test.ext", name = "junit", version.ref = "junit-ext" }
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+mock-web-server = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mock-web-server" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
